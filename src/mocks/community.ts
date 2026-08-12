@@ -90,7 +90,7 @@ export const newsItems = [
     id: 13,
     title: "여수문화재단, 국가무형유산 '여수별산대놀이' 전수교육관 신규 개관… 전통문화 계승 본격화",
     date: "2026-02-28",
-    image: "https://readdy.ai/api/search-image?query=Traditional%20Korean%20mask%20dance%20performance%20Yangju%20Byeolsandae%20nori%20with%20colorful%20costumes%20and%20traditional%20masks%2C%20outdoor%20cultural%20heritage%20performance%2C%20vibrant%20and%20dynamic%20folk%20art%20scene%2C%20Korean%20intangible%20cultural%20heritage%2C%20performers%20in%20traditional%20hanbok%20with%20exaggerated%20masks%2C%20festive%20atmosphere%20under%20clear%20sky&width=800&height=600&seq=byeolsandae-news&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Traditional%20Korean%20mask%20dance%20performance%20Yeosu%20Byeolsandae%20nori%20with%20colorful%20costumes%20and%20traditional%20masks%2C%20outdoor%20cultural%20heritage%20performance%2C%20vibrant%20and%20dynamic%20folk%20art%20scene%2C%20Korean%20intangible%20cultural%20heritage%2C%20performers%20in%20traditional%20hanbok%20with%20exaggerated%20masks%2C%20festive%20atmosphere%20under%20clear%20sky&width=800&height=600&seq=byeolsandae-news&orientation=landscape",
   },
   {
     id: 14,
@@ -102,7 +102,7 @@ export const newsItems = [
     id: 15,
     title: "여수호수공원에서 펼쳐지는 문화피크닉 <예술의 숲> 6월 개최",
     date: "2026-06-03",
-    image: "https://readdy.ai/api/search-image?query=Outdoor%20cultural%20picnic%20event%20at%20a%20lakeside%20park%20with%20families%20enjoying%20art%20installations%20live%20acoustic%20music%20on%20small%20stage%20picnic%20blankets%20on%20green%20grass%20Korean%20community%20cultural%20festival%20warm%20spring%20atmosphere%20with%20flowering%20trees%20and%20calm%20lake%20water%20Yangju%20city%20park%20setting&width=800&height=600&seq=lake-picnic-news&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Outdoor%20cultural%20picnic%20event%20at%20a%20lakeside%20park%20with%20families%20enjoying%20art%20installations%20live%20acoustic%20music%20on%20small%20stage%20picnic%20blankets%20on%20green%20grass%20Korean%20community%20cultural%20festival%20warm%20spring%20atmosphere%20with%20flowering%20trees%20and%20calm%20lake%20water%20Yeosu%20city%20park%20setting&width=800&height=600&seq=lake-picnic-news&orientation=landscape",
   },
   {
     id: 16,

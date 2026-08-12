@@ -19,7 +19,7 @@ const greetings = [
     position: "여수문화재단 이사장",
     title: "품격 있는 문화도시, 여수를 향한 힘찬 여정에 함께해 주십시오",
     subtitle: "여수문화재단을 찾아주신 시민 여러분, 반갑습니다.",
-    image: "https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20middle-aged%20Korean%20man%20in%20his%20mid-fifties%20wearing%20a%20dark%20navy%20suit%20with%20a%20white%20dress%20shirt%2C%20warm%20and%20trustworthy%20expression%2C%20soft%20natural%20studio%20lighting%2C%20clean%20white%20background%2C%20professional%20corporate%20headshot%20photography%20style%20with%20subtle%20smile%20and%20direct%20eye%20contact%2C%20conservative%20and%20dignified%20appearance%20suitable%20for%20a%20cultural%20foundation%20chairman%20portrait%20photography&width=520&height=640&seq=chairman-yangjumun-2026&orientation=portrait",
+    image: "https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20middle-aged%20Korean%20man%20in%20his%20mid-fifties%20wearing%20a%20dark%20navy%20suit%20with%20a%20white%20dress%20shirt%2C%20warm%20and%20trustworthy%20expression%2C%20soft%20natural%20studio%20lighting%2C%20clean%20white%20background%2C%20professional%20corporate%20headshot%20photography%20style%20with%20subtle%20smile%20and%20direct%20eye%20contact%2C%20conservative%20and%20dignified%20appearance%20suitable%20for%20a%20cultural%20foundation%20chairman%20portrait%20photography&width=520&height=640&seq=chairman-yeosumun-2026&orientation=portrait",
     content: `여수시는 인구 50만 명을 달성하며, 당당히 대도시로 도약했습니다. 풍부한 잠재력과 경쟁력을 지닌 여수는, 100만 문화도시로의 비상을 준비하고 있습니다.
 
 이러한 변화와 도전 속에서, 지역민과 문화인들의 오랜 염원을 담아 여수문화재단이 출범하게 되었습니다. 재단은 지역의 역사와 문화, 예술 자원을 아우르는 통합 문화예술 플랫폼으로서, 누구나 차별 없이 마음껏 문화예술을 즐길 수 있는 환경을 조성하겠습니다.

@@ -9,7 +9,7 @@ insert into public.events (type, title, image_url, tag, location, start_date, en
 ('performance', '[기획] 찾아가는 문화하루 1회차 <정오의 하모니>', 'https://public.readdy.ai/ai/img_res/edited_10efdec102b0c023cd0144ac639ebc57_c28165a8.jpg', '기획', 'LG이노텍 여수사업장', '2026-06-10', '2026-06-10', 2),
 ('performance', '[기획] 2026 문화살롱 2회차 <오락가락(五樂歌樂) 콘서트: 청춘국악>', 'https://public.readdy.ai/ai/img_res/edited_e35327b635d438b265e874405fa149c1_c28165a8.jpg', '기획', '여수사랑행복센터 대공연장', '2026-06-11', '2026-06-11', 3),
 ('performance', '[기획] 2026 실내악 시리즈<브라보 브라스(Bravo Brass)>', 'https://public.readdy.ai/ai/img_res/edited_57bdb839b35c1d1f4424b4b4b9a0b8d5_c28165a8.jpg', '기획', '여수아트홀 공연장', '2026-06-19', '2026-06-19', 4),
-('performance', '[대관] 여수시립소년소녀합창단 제5회 정기연주회「Mozart in Yangju」', 'https://public.readdy.ai/ai/img_res/edited_90cff594bad1289137ad7ef69a018cfd_c28165a8.jpg', '대관', '여수우정행복센터 공연장', '2026-06-20', '2026-06-20', 5),
+('performance', '[대관] 여수시립소년소녀합창단 제5회 정기연주회「Mozart in Yeosu」', 'https://public.readdy.ai/ai/img_res/edited_90cff594bad1289137ad7ef69a018cfd_c28165a8.jpg', '대관', '여수우정행복센터 공연장', '2026-06-20', '2026-06-20', 5),
 ('performance', '[대관] 제6회 여수시민오케스트라 정기연주회', 'https://public.readdy.ai/ai/img_res/edited_beb841ef883ac732dbd069a7d4e5f05f_c28165a8.jpg', '대관', '여수아트홀', '2026-06-27', '2026-06-27', 6),
 ('performance', '[대관] 지브리와 사랑에 빠지다: 지브리 영화음악 콘서트 2026 - 여수', 'https://public.readdy.ai/ai/img_res/edited_7f36ee7c881b04cce5fa2d1643e70c12_c28165a8.jpg', '대관', '여수아트홀', '2026-06-28', '2026-06-28', 7),
 ('performance', '[대관] 여수시립예술단 제55회 정기공연 어린이 뮤지컬<콩도사 인삼도사의 옛날 옛적에>', 'https://public.readdy.ai/ai/img_res/edited_7210ccfd0a56dc83aedc93e086ce5300_c28165a8.jpg', '대관', '여수우정행복센터 공연장', '2026-05-15', '2026-05-16', 8),

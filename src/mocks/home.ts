@@ -82,7 +82,7 @@ export const performanceTabs = ["공연", "전시", "축제"] as const;
 export const performanceItems = [
   {
     id: 1,
-    title: "[대관] 여수시립소년소녀합창단 제5회 정기연주회「Mozart in Yangju」",
+    title: "[대관] 여수시립소년소녀합창단 제5회 정기연주회「Mozart in Yeosu」",
     image: "https://public.readdy.ai/ai/img_res/edited_90cff594bad1289137ad7ef69a018cfd_c28165a8.jpg",
     type: "대관",
     category: "공연",

@@ -92,7 +92,7 @@ export default function Footer() {
               SNS 채널
             </h4>
             {/* TODO: 재단 공식 SNS 계정 확보 후 href 연결.
-                기존 링크는 양주문화재단 실계정(yjcf_kr, yangju_cf, yangjucf)이라
+                기존 링크는 양주문화재단 실계정(yjcf_kr, yeosu_cf, yeosucf)이라
                 방문자를 타 기관으로 보내게 되어 전부 제거했다. */}
             <div className="flex flex-wrap gap-3">
               {SNS_CHANNELS.map((sns) => (
