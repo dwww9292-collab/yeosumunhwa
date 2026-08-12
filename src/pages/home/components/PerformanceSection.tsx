@@ -24,7 +24,7 @@ export default function PerformanceSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
           <div>
-            <p className="text-sm text-foreground-500 mb-1">지금 양주에서 만나는</p>
+            <p className="text-sm text-foreground-500 mb-1">지금 여수에서 만나는</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground-950">공연·전시·축제</h2>
           </div>
           <div className="flex gap-1 mt-4 md:mt-0">

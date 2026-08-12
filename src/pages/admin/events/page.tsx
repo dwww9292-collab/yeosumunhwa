@@ -287,7 +287,7 @@ export default function AdminEvents() {
                 value={form.location ?? ""}
                 onChange={(e) => setForm({ ...form, location: e.target.value || null })}
                 className="input"
-                placeholder="예: 양주아트홀 공연장"
+                placeholder="예: 여수아트홀 공연장"
               />
             </Field>
 

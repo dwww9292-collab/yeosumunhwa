@@ -5,7 +5,7 @@ export default function TicketCTA() {
     <section className="py-16 md:py-20 bg-background-50">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <div className="mb-6">
-          <p className="text-sm text-accent-500 font-bold mb-2">지금 양주에서는</p>
+          <p className="text-sm text-accent-500 font-bold mb-2">지금 여수에서는</p>
           <h2 className="text-2xl md:text-3xl font-bold text-accent-500">공연/전시 예매</h2>
         </div>
         <div className="mb-8">

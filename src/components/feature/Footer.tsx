@@ -35,9 +35,9 @@ export default function Footer() {
         <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* Logo & Contact - spans 5 cols */}
           <div className="lg:col-span-5">
-            <span className="text-xl font-bold text-background-50 mb-4 block">양주문화재단</span>
+            <span className="text-xl font-bold text-background-50 mb-4 block">여수문화재단</span>
             <address className="not-italic text-sm text-foreground-400 leading-relaxed space-y-1.5">
-              <p>(우)11461 경기도 양주시 광적면 부흥로618번길 303</p>
+              <p>(우)11461 경기도 여수시 광적면 부흥로618번길 303</p>
               <p className="flex flex-wrap gap-x-4 gap-y-1">
                 <span>대표전화: <strong className="text-foreground-200 font-medium">031-828-9772</strong></span>
                 <span>FAX: 031-828-9779</span>
@@ -84,7 +84,7 @@ export default function Footer() {
                 href="https://blog.naver.com/yjcf_kr"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="양주문화재단 블로그"
+                title="여수문화재단 블로그"
                 className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <i className="ri-article-line text-lg text-background-50"></i>
@@ -93,7 +93,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@yangju_cf"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="양주문화재단 유튜브"
+                title="여수문화재단 유튜브"
                 className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <i className="ri-youtube-line text-lg text-background-50"></i>
@@ -102,7 +102,7 @@ export default function Footer() {
                 href="https://www.instagram.com/yangju_cf"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="양주문화재단 인스타그램"
+                title="여수문화재단 인스타그램"
                 className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <i className="ri-instagram-line text-lg text-background-50"></i>
@@ -111,7 +111,7 @@ export default function Footer() {
                 href="https://www.facebook.com/yangjucf"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="양주문화재단 페이스북"
+                title="여수문화재단 페이스북"
                 className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <i className="ri-facebook-line text-lg text-background-50"></i>
@@ -120,14 +120,14 @@ export default function Footer() {
                 href="https://pf.kakao.com/_yangjucf"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="양주문화재단 카카오톡 채널"
+                title="여수문화재단 카카오톡 채널"
                 className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <i className="ri-kakao-talk-line text-lg text-background-50"></i>
               </a>
             </div>
             <p className="text-xs text-foreground-500 mt-4 leading-relaxed">
-              양주문화재단의 다양한 소식을<br />
+              여수문화재단의 다양한 소식을<br />
               SNS에서 빠르게 만나보세요.
             </p>
           </div>

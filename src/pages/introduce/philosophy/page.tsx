@@ -83,7 +83,7 @@ export default function PhilosophyPage() {
             <div className="w-10 h-0.5 bg-[#1a4fa0]/30"></div>
           </div>
           <p className="text-sm text-gray-600 text-center leading-relaxed mb-8">
-            본인은 양주문화재단 임직원으로서 임직원행동강령을 준수함은<br />
+            본인은 여수문화재단 임직원으로서 임직원행동강령을 준수함은<br />
             물론 청렴하고 검소한 생활을 통해 공직사회의 부패를 척결하고<br />
             공정한 사회를 조성하는데 모범이 될 것을 다짐하며 다음과 같이 서약합니다.
           </p>
@@ -99,10 +99,10 @@ export default function PhilosophyPage() {
           </ol>
           <div className="border-t border-gray-200 pt-6 text-center">
             <p className="text-sm text-gray-600 mb-3">만약 위사항을 위반하였을 경우에는 어떠한 처벌이나 불이익도 감수할 것을 다짐합니다.</p>
-            <p className="text-base font-bold text-gray-800 mb-3">재단법인 양주문화재단 임직원 일동</p>
+            <p className="text-base font-bold text-gray-800 mb-3">재단법인 여수문화재단 임직원 일동</p>
             <div className="flex justify-center">
               <img
-                alt="양주문화재단 로고"
+                alt="여수문화재단 로고"
                 className="h-8 object-contain"
                 src="https://storage.readdy-site.link/project_files/82038e88-bc77-4e0d-916f-e97740fcc1f6/44994b6e-d2cb-414b-983e-4d8108dcb071_---.png?v=05b6e11fe497f095af4bda6ced60f4a8"
               />

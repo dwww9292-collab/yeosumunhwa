@@ -2,7 +2,7 @@ import { useState } from "react";
 import { partners } from "@/mocks/home";
 import { realPartners } from "@/mocks/real-assets";
 
-// 실제 양주시 로고를 앞에 배치
+// 실제 여수시 로고를 앞에 배치
 const partnerList = [...realPartners, ...partners];
 
 export default function PartnersSection() {

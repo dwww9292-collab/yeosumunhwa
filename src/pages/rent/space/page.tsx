@@ -8,7 +8,7 @@ const rentTabs = [
   { label: "공간소개", href: "/rent/space" },
 ];
 
-const venueList = ["시민회관", "양주사랑행복센터", "양주우정행복센터", "양주아트홀"];
+const venueList = ["시민회관", "여수사랑행복센터", "여수우정행복센터", "여수아트홀"];
 
 export default function RentSpacePage() {
   const [activeVenue, setActiveVenue] = useState("시민회관");

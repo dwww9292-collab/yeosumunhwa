@@ -27,7 +27,7 @@ export default function EstablishmentPage() {
         <div className="mb-8 flex flex-col items-center">
           <p className="text-sm font-semibold text-gray-500 mb-3">비전</p>
           <div className="w-full max-w-xl bg-[#1a4fa0] rounded-full px-8 py-4 text-center text-white text-base md:text-lg font-bold">
-            시민과 동행하는 문화도시 양주
+            시민과 동행하는 문화도시 여수
           </div>
         </div>
 
@@ -35,7 +35,7 @@ export default function EstablishmentPage() {
         <div className="mb-10 flex flex-col items-center">
           <p className="text-sm font-semibold text-gray-500 mb-3">목표</p>
           <div className="w-full max-w-xl border-2 border-[#1a4fa0]/40 rounded-full px-8 py-4 text-center text-[#1a4fa0] text-base font-bold">
-            문화예술로 사회적 가치를 실현하는 양주문화재단
+            문화예술로 사회적 가치를 실현하는 여수문화재단
           </div>
         </div>
 

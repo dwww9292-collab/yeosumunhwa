@@ -47,7 +47,7 @@ export default function ExhibitionPage() {
         section="exhibition"
         activeHref="/business/exhibition"
         fallbackTitle="전시"
-        fallbackDesc="양주 지역 예술가의 활동 기회를 제공하고 창작 의욕을 고취시키며, 지역 내 문화공간을 활용한 문화 향유를 제공합니다."
+        fallbackDesc="여수 지역 예술가의 활동 기회를 제공하고 창작 의욕을 고취시키며, 지역 내 문화공간을 활용한 문화 향유를 제공합니다."
       />
 
       {/* Filters */}

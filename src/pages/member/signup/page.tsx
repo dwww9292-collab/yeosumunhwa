@@ -3,14 +3,13 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
 
 export default function MemberSignup() {
-  const { signUp, session, loading } = useAuth();
+  const { signUp, signIn, session, loading } = useAuth();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [done, setDone] = useState<"none" | "confirm">("none");
   const [submitting, setSubmitting] = useState(false);
 
   if (!loading && session) {
@@ -25,47 +24,28 @@ export default function MemberSignup() {
       return;
     }
     setSubmitting(true);
-    const { error, needsConfirm } = await signUp(email.trim(), password, name.trim());
-    setSubmitting(false);
+    const { error } = await signUp(email.trim(), password, name.trim());
     if (error) {
+      setSubmitting(false);
       setError(error);
       return;
     }
-    if (needsConfirm) {
-      // 이메일 확인이 켜져 있는 경우
-      setDone("confirm");
+    // 이메일 확인이 켜져있어 세션이 없을 수도 있으므로, 명시적으로 로그인 시도
+    const { error: signInError } = await signIn(email.trim(), password);
+    setSubmitting(false);
+    if (signInError) {
+      setError("가입은 완료되었지만 자동 로그인에 실패했습니다. 로그인 페이지에서 다시 시도해주세요.");
       return;
     }
-    // 바로 로그인됨
     navigate("/mypage", { replace: true });
   };
-
-  if (done === "confirm") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-        <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
-          <i className="ri-mail-check-line text-3xl text-[#1a4fa0]"></i>
-          <h1 className="text-lg font-bold text-gray-900 mt-3">가입 신청 완료</h1>
-          <p className="text-sm text-gray-500 mt-2">
-            입력하신 이메일({email})로 인증 링크를 보냈습니다. 인증 후 로그인해주세요.
-          </p>
-          <Link
-            to="/member/login"
-            className="mt-6 inline-block bg-[#1a4fa0] text-white rounded-lg px-5 py-2 text-sm cursor-pointer"
-          >
-            로그인하러 가기
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="text-center mb-8">
           <h1 className="text-xl font-bold text-gray-900">회원가입</h1>
-          <p className="text-sm text-gray-500 mt-1">양주문화재단 회원으로 가입하세요.</p>
+          <p className="text-sm text-gray-500 mt-1">여수문화재단 회원으로 가입하세요.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

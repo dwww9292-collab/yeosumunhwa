@@ -39,7 +39,7 @@ export default function BusinessSection() {
     <section className="py-12 md:py-16 bg-background-100">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="mb-8">
-          <p className="text-sm text-foreground-500 mb-1">지금 양주에서 만나는</p>
+          <p className="text-sm text-foreground-500 mb-1">지금 여수에서 만나는</p>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground-950">문화사업</h2>
         </div>
 

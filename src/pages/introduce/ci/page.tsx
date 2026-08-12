@@ -33,7 +33,7 @@ export default function CIPage() {
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">CI소개</h2>
           <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            양주문화재단의 CI는 양주별산대놀이의 해학과 풍자, 그리고 양주의 전통과 자연을
+            여수문화재단의 CI는 여수별산대놀이의 해학과 풍자, 그리고 여수의 전통과 자연을
             현대적으로 재해석하여 담아낸 브랜드 아이덴티티입니다.
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function CIPage() {
             <div className="flex flex-col lg:flex-row gap-10 items-center">
               <div className="flex-shrink-0 w-full lg:w-72 flex items-center justify-center bg-white rounded-xl border border-gray-200 p-6">
                 <img
-                  alt="양주문화재단 심볼마크"
+                  alt="여수문화재단 심볼마크"
                   className="max-w-full max-h-[220px] object-contain"
                   src={logoUrl}
                 />
@@ -57,14 +57,14 @@ export default function CIPage() {
               <div className="flex-1">
                 <h4 className="text-base font-bold text-gray-900 mb-3">브랜드마크 형태 의미</h4>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  양주문화재단의 심볼마크는 양주별산대놀이의 세 가면 — <strong>말뚝이</strong>,
+                  여수문화재단의 심볼마크는 여수별산대놀이의 세 가면 — <strong>말뚝이</strong>,
                   <strong>취발이</strong>, <strong>샌님</strong> — 의 특징을 현대적으로 추상화하여 담아냈습니다.
                   중앙의 오렌지 타원형은 취발이의 가면을, 좌측의 초록 곡선은 말뚝이의 풍자적인 미소를,
                   우측의 파란 곡선은 샌님의 유쾌한 형태를 상징합니다.
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   하단의 검정색 웃는 곡선은 무대의 미소와 웃음을, 풍자와 해학을 담은 공연의
-                  즐거움을 표현합니다. 전체적으로 양주의 산과 흐름, 그리고 시민과 문화의
+                  즐거움을 표현합니다. 전체적으로 여수의 산과 흐름, 그리고 시민과 문화의
                   포용과 연대를 시각적으로 나타냅니다.
                 </p>
               </div>
@@ -112,9 +112,9 @@ export default function CIPage() {
               <div className="w-10 h-10 rounded-full bg-[#E65A2D]/10 flex items-center justify-center mb-3">
                 <i className="ri-emotion-happy-line text-[#E65A2D]" />
               </div>
-              <h5 className="text-sm font-bold text-gray-900 mb-1">양주별산대놀이 가면</h5>
+              <h5 className="text-sm font-bold text-gray-900 mb-1">여수별산대놀이 가면</h5>
               <p className="text-xs text-gray-600 leading-relaxed">말뚝이 · 취발이 · 샌님</p>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">양주의 대표적인 무형문화재인 별산대놀이의 세 가면을 현대적으로 재해석</p>
+              <p className="text-xs text-gray-500 mt-1 leading-relaxed">여수의 대표적인 무형문화재인 별산대놀이의 세 가면을 현대적으로 재해석</p>
             </div>
             <div className="bg-gray-50/80 border border-gray-100 rounded-2xl p-5">
               <div className="w-10 h-10 rounded-full bg-[#333333]/10 flex items-center justify-center mb-3">
@@ -128,9 +128,9 @@ export default function CIPage() {
               <div className="w-10 h-10 rounded-full bg-[#2E8F63]/10 flex items-center justify-center mb-3">
                 <i className="ri-landscape-line text-[#2E8F63]" />
               </div>
-              <h5 className="text-sm font-bold text-gray-900 mb-1">양주의 산과 흐름</h5>
+              <h5 className="text-sm font-bold text-gray-900 mb-1">여수의 산과 흐름</h5>
               <p className="text-xs text-gray-600 leading-relaxed">자연과 역사, 지역의 정체성</p>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">양주의 아름다운 자연환경과 역사적 정체성을 곡선으로 표현</p>
+              <p className="text-xs text-gray-500 mt-1 leading-relaxed">여수의 아름다운 자연환경과 역사적 정체성을 곡선으로 표현</p>
             </div>
             <div className="bg-gray-50/80 border border-gray-100 rounded-2xl p-5">
               <div className="w-10 h-10 rounded-full bg-[#1F4E8C]/10 flex items-center justify-center mb-3">
@@ -189,11 +189,11 @@ export default function CIPage() {
           <div className="bg-gray-50/80 border border-gray-100 rounded-2xl p-6 md:p-8">
             <h4 className="text-sm font-bold text-gray-900 mb-1">슬로건</h4>
             <p className="text-xs text-gray-500 mb-5">
-              양주문화재단의 핵심 가치를 담은 브랜드 슬로건입니다.
+              여수문화재단의 핵심 가치를 담은 브랜드 슬로건입니다.
             </p>
             <div className="bg-white border border-gray-200 rounded-xl p-6 text-center">
               <p className="text-lg font-bold text-gray-900 mb-1">
-                양주의 전통과 오늘의 문화를 잇는 열린 문화플랫폼
+                여수의 전통과 오늘의 문화를 잇는 열린 문화플랫폼
               </p>
               <p className="text-xs text-gray-500">
                 Yangju Cultural Foundation — Bridging tradition and today's culture
@@ -210,15 +210,15 @@ export default function CIPage() {
           </div>
 
           <p className="text-sm text-gray-500 mb-8 leading-relaxed">
-            양주문화재단의 공식 캐릭터는 양주별산대놀이의 해학과 풍자를 담은 세 마스크 —
+            여수문화재단의 공식 캐릭터는 여수별산대놀이의 해학과 풍자를 담은 세 마스크 —
             말뚝이, 취발이, 샌님 — 을 현대적으로 재해석하여 제작되었습니다.
-            세 캐릭터는 각기 다른 성격과 역할을 통해 양주의 문화와 전통을 유쾌하고 친근하게 전달합니다.
+            세 캐릭터는 각기 다른 성격과 역할을 통해 여수의 문화와 전통을 유쾌하고 친근하게 전달합니다.
           </p>
 
           {/* 캐릭터 전체 이미지 */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 mb-8 flex items-center justify-center">
             <img
-              alt="양주문화재단 캐릭터 — 말뚝이, 취발이, 샌님"
+              alt="여수문화재단 캐릭터 — 말뚝이, 취발이, 샌님"
               className="max-w-full object-contain"
               src={charactersUrl}
             />
@@ -332,7 +332,7 @@ export default function CIPage() {
         {/* ========== 하단 안내 ========== */}
         <div className="bg-gray-100/80 rounded-xl p-4 text-center">
           <p className="text-xs text-gray-500">
-            ※ 본 캐릭터는 양주별산대놀이 가면의 특징을 현대적으로 재해석하여 제작되었습니다.
+            ※ 본 캐릭터는 여수별산대놀이 가면의 특징을 현대적으로 재해석하여 제작되었습니다.
           </p>
         </div>
       </div>

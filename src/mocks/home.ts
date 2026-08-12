@@ -26,21 +26,21 @@ export const newsItems = [
   {
     id: 1,
     category: "공지사항",
-    title: "[양주문화재단 공고 제2026-37호] 2026 공연창작 지원사업 최종 선정 결과 공고",
+    title: "[여수문화재단 공고 제2026-37호] 2026 공연창작 지원사업 최종 선정 결과 공고",
     date: "2026-06-02",
     isNew: true,
   },
   {
     id: 2,
     category: "공지사항",
-    title: "[양주문화재단 공고 제2026-36호] 2026년 경기 생활문화 공간 활성화 지원사업 <한뼘 더 커뮤니티> 서류심사 결과 공고",
+    title: "[여수문화재단 공고 제2026-36호] 2026년 경기 생활문화 공간 활성화 지원사업 <한뼘 더 커뮤니티> 서류심사 결과 공고",
     date: "2026-05-29",
     isNew: false,
   },
   {
     id: 3,
     category: "공지사항",
-    title: "양주문화재단 임직원 사칭 허위 구매 사기 피해 예방 안내",
+    title: "여수문화재단 임직원 사칭 허위 구매 사기 피해 예방 안내",
     date: "2026-05-08",
     isNew: false,
   },
@@ -82,7 +82,7 @@ export const performanceTabs = ["공연", "전시", "축제"] as const;
 export const performanceItems = [
   {
     id: 1,
-    title: "[대관] 양주시립소년소녀합창단 제5회 정기연주회「Mozart in Yangju」",
+    title: "[대관] 여수시립소년소녀합창단 제5회 정기연주회「Mozart in Yangju」",
     image: "https://public.readdy.ai/ai/img_res/edited_90cff594bad1289137ad7ef69a018cfd_c28165a8.jpg",
     type: "대관",
     category: "공연",
@@ -110,7 +110,7 @@ export const performanceItems = [
   },
 ];
 
-export const rentalTabs = ["시민회관", "양주사랑행복센터", "양주우정행복센터", "양주아트홀"] as const;
+export const rentalTabs = ["시민회관", "여수사랑행복센터", "여수우정행복센터", "여수아트홀"] as const;
 
 export const rentalDates = [
   { day: "08", week: "MON", active: true },
@@ -142,21 +142,21 @@ export const rentalItems = [
     title: "공연장 휴관일",
     place: "다목적실",
     time: "8:00 ~ 22:00",
-    host: "양주문화재단",
+    host: "여수문화재단",
   },
   {
     id: 2,
     title: "공연장 휴관일",
     place: "소공연장",
     time: "8:00 ~ 22:00",
-    host: "양주문화재단",
+    host: "여수문화재단",
   },
   {
     id: 3,
     title: "2026 전국체전 시설 개·보수 사업 추진 공사",
     place: "대공연장",
     time: "8:00 ~ 22:00",
-    host: "양주시 체육과",
+    host: "여수시 체육과",
   },
 ];
 
@@ -165,13 +165,13 @@ export const spaceBanners = [
     id: 1,
     title: "시민회관",
     subtitle: "공간소개",
-    description: "대공연장(900석), 소공연장(302석), 다목적실을\n갖춘 양주의 대표 문화공간입니다.",
+    description: "대공연장(900석), 소공연장(302석), 다목적실을\n갖춘 여수의 대표 문화공간입니다.",
     image: "https://public.readdy.ai/ai/img_res/edited_651952617912a6c9672e010a4ab816a2_333b818a.jpg",
     link: "/rent/space",
   },
   {
     id: 2,
-    title: "양주사랑행복센터",
+    title: "여수사랑행복센터",
     subtitle: "공간소개",
     description: "대공연장(500석)을 비롯해 문화카페까지\n주민 곁으로 찾아간 생활문화 거점입니다.",
     image: "https://public.readdy.ai/ai/img_res/edited_5afb3b103fa866ccc4b8e0fc48b27681_f7139d32.jpg",
@@ -179,7 +179,7 @@ export const spaceBanners = [
   },
   {
     id: 3,
-    title: "양주우정행복센터",
+    title: "여수우정행복센터",
     subtitle: "공간소개",
     description: "대공연장(700석)과 전시실을 갖춘\n옥정 신도시의 문화 랜드마크입니다.",
     image: "https://public.readdy.ai/ai/img_res/edited_3dd8a408cdd6bb5680d00b195c58bf84_726ce405.jpg",
@@ -187,7 +187,7 @@ export const spaceBanners = [
   },
   {
     id: 4,
-    title: "양주아트홀",
+    title: "여수아트홀",
     subtitle: "공간소개",
     description: "최적의 음향을 자랑하는 클래식 전용홀(350석),\n실내악과 독주회의 성지입니다.",
     image: "https://public.readdy.ai/ai/img_res/edited_a0a2d478892d5042a37e3c78e898106f_4b19b0a4.jpg",
@@ -198,31 +198,31 @@ export const spaceBanners = [
 export const partners = [
   {
     id: 1,
-    name: "양주시청",
+    name: "여수시청",
     image: "https://public.readdy.ai/ai/img_res/edited_db48676dcbe911a249b4426b0b864767_c28165a8.jpg",
     link: "https://www.yangju.go.kr/",
   },
   {
     id: 2,
-    name: "양주도시공사",
+    name: "여수도시공사",
     image: "https://public.readdy.ai/ai/img_res/edited_a303ddc8f8486e28c26f395e49ab8d78_c28165a8.jpg",
     link: "https://www.yangjuuc.or.kr/",
   },
   {
     id: 3,
-    name: "양주문화원",
+    name: "여수문화원",
     image: "https://public.readdy.ai/ai/img_res/edited_c6e7a283330333dc752d0d5789b01c28_c28165a8.jpg",
     link: "https://www.yjcc.or.kr/",
   },
   {
     id: 4,
-    name: "양주시청소년재단",
+    name: "여수시청소년재단",
     image: "https://public.readdy.ai/ai/img_res/edited_c6e3c7340233d6644605c70c0a57d4d5_c28165a8.jpg",
     link: "https://www.yjyf.or.kr/",
   },
   {
     id: 5,
-    name: "국립민속박물관 양주",
+    name: "국립민속박물관 여수",
     image: "https://public.readdy.ai/ai/img_res/edited_eae197d77f1ecf30e965904fbf97d5eb_c28165a8.jpg",
     link: "https://www.nfm.go.kr/",
   },

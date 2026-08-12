@@ -47,7 +47,7 @@ export default function PerformancePage() {
         section="performance"
         activeHref="/business/performance"
         fallbackTitle="공연"
-        fallbackDesc="다채롭고 수준높은 공연 제공을 통해 지역의 문화 향유권을 확대하고, 시민과 동행하는 문화도시 양주로 나아가고자 합니다."
+        fallbackDesc="다채롭고 수준높은 공연 제공을 통해 지역의 문화 향유권을 확대하고, 시민과 동행하는 문화도시 여수로 나아가고자 합니다."
       />
 
       {/* Filters */}

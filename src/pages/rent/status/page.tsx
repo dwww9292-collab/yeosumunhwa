@@ -13,7 +13,7 @@ const rentTabs = [
   { label: "공간소개", href: "/rent/space" },
 ];
 
-const venues = ["시민회관", "양주사랑행복센터", "양주우정행복센터", "양주아트홀"];
+const venues = ["시민회관", "여수사랑행복센터", "여수우정행복센터", "여수아트홀"];
 
 function getDaysInMonth(year: number, month: number) {
   return new Date(year, month, 0).getDate();
@@ -249,7 +249,7 @@ export default function RentStatusPage() {
           </dt>
           <dd className="text-sm text-gray-600 flex items-center gap-2">
             <i className="ri-phone-line"></i>
-            문의전화 : 031-950-8434(양주우정행복센터, 양주사랑행복센터), 031-950-8435(시민회관, 양주아트홀)
+            문의전화 : 031-950-8434(여수우정행복센터, 여수사랑행복센터), 031-950-8435(시민회관, 여수아트홀)
           </dd>
         </dl>
       </div>

@@ -46,9 +46,9 @@ export default function FestivalPage() {
       <EventHero
         section="festival"
         activeHref="/business/festival"
-        eyebrow="2026 양주 축제"
+        eyebrow="2026 여수 축제"
         fallbackTitle="축제"
-        fallbackDesc="양주 대표 공연예술축제로, 양주포크페스티벌·양주호수공원 불꽃축제 등을 통해 보편적 문화 복지를 실현하고 다양한 공연 콘텐츠로 시민들과 함께 하겠습니다."
+        fallbackDesc="여수 대표 공연예술축제로, 여수포크페스티벌·여수호수공원 불꽃축제 등을 통해 보편적 문화 복지를 실현하고 다양한 공연 콘텐츠로 시민들과 함께 하겠습니다."
       />
 
       {/* Filters */}

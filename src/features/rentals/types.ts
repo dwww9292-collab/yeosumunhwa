@@ -1,8 +1,8 @@
 export const RENTAL_SPACES = [
   "시민회관",
-  "양주사랑행복센터",
-  "양주우정행복센터",
-  "양주아트홀",
+  "여수사랑행복센터",
+  "여수우정행복센터",
+  "여수아트홀",
 ] as const;
 
 export type RentalSpace = (typeof RENTAL_SPACES)[number];

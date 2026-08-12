@@ -74,8 +74,8 @@ export default function OrganizationPage() {
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">조직소개</h2>
           <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            양주문화재단은 이사장과 대표이사를 중심으로 4개의 전문팀이 유기적으로 협력하여
-            양주의 문화예술 발전을 위해 최선을 다하고 있습니다.
+            여수문화재단은 이사장과 대표이사를 중심으로 4개의 전문팀이 유기적으로 협력하여
+            여수의 문화예술 발전을 위해 최선을 다하고 있습니다.
           </p>
         </div>
 
