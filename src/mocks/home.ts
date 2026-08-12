@@ -1,10 +1,10 @@
 export const heroSlides = [
   {
     id: 1,
-    title: "2026 문화살롱",
+    title: "아름다운 물, 문화가 흐르는 여수",
     link: "#",
     poster: true, // 텍스트가 박혀 있는 포스터형(오버레이/제목 미표시)
-    image: "https://storage.readdy-site.link/project_files/c131d95e-3fd2-49fb-ba6a-132840b712bc/39509466-6397-4789-a1fd-afe440d52fd6_-.png?v=aecbe212593228f17dabbe100abc0eed",
+    image: "/images/hero-1.png",
   },
   {
     id: 2,
