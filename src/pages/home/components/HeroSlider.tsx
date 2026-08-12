@@ -2,6 +2,12 @@ import { useState, useEffect, useCallback } from "react";
 import { heroSlides } from "@/mocks/home";
 import { realHeroSlides } from "@/mocks/real-assets";
 import { fetchActiveSlides } from "@/features/hero/api";
+// DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
+import {
+  DEMO_HERO_HEIGHT,
+  DEMO_HERO_IMAGES,
+  DEMO_IMAGE_OVERRIDE,
+} from "@/data/demoImages";
 
 interface Slide {
   id: string | number;
@@ -16,8 +22,20 @@ const posterSlides: Slide[] = heroSlides.filter((s) => s.poster);
 const nonPosterSlides: Slide[] = heroSlides.filter((s) => !s.poster);
 const fallbackSlides: Slide[] = [...posterSlides, ...realHeroSlides, ...nonPosterSlides];
 
+// DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
+// DB 슬라이드가 없을 때도 시연 이미지가 보이도록, 오버라이드 시 기본 슬라이드도 교체한다.
+const demoSlides: Slide[] = DEMO_HERO_IMAGES.map((src, i) => ({
+  id: `demo-${i}`,
+  title: "",
+  image: src,
+  poster: true,
+}));
+
 export default function HeroSlider() {
-  const [slides, setSlides] = useState<Slide[]>(fallbackSlides);
+  const [slides, setSlides] = useState<Slide[]>(
+    // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
+    DEMO_IMAGE_OVERRIDE && demoSlides.length > 0 ? demoSlides : fallbackSlides,
+  );
   const [current, setCurrent] = useState(0);
 
   // 관리자(hero_slides, section="home")에 등록된 슬라이드가 있으면 그것으로 표시
@@ -26,6 +44,20 @@ export default function HeroSlider() {
     fetchActiveSlides("home")
       .then((rows) => {
         if (!active || rows.length === 0) return;
+        // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
+        // 텍스트(제목·링크)는 DB 값 그대로 두고 이미지 경로만 로컬 시연 이미지로 바꾼다.
+        if (DEMO_IMAGE_OVERRIDE && DEMO_HERO_IMAGES.length > 0) {
+          setSlides(
+            rows.map((r, i) => ({
+              id: r.id,
+              title: r.title || r.subtitle || "",
+              image: DEMO_HERO_IMAGES[i % DEMO_HERO_IMAGES.length],
+              link: r.description || undefined,
+            })),
+          );
+          setCurrent(0);
+          return;
+        }
         setSlides(
           rows
             .filter((r) => r.image_url)
@@ -57,7 +89,12 @@ export default function HeroSlider() {
   }, [next, slides.length]);
 
   return (
-    <section className="relative w-full h-[600px] md:h-[760px] lg:h-[900px] xl:h-[980px] overflow-hidden bg-gradient-to-r from-primary-950 via-primary-900 to-primary-800 mt-[-80px] md:mt-[-96px]">
+    <section
+      className={`relative w-full ${
+        // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거 (모바일 잘림 방지용 높이)
+        DEMO_IMAGE_OVERRIDE ? DEMO_HERO_HEIGHT : "h-[600px] md:h-[760px] lg:h-[900px] xl:h-[980px]"
+      } overflow-hidden bg-gradient-to-r from-primary-950 via-primary-900 to-primary-800 mt-[-80px] md:mt-[-96px]`}
+    >
       {slides.map((slide, index) => {
         const isPoster = !!slide.poster;
         const hasLink = !!slide.link && slide.link !== "#";

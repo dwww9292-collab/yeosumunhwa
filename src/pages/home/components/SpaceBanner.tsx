@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { spaceBanners } from "@/mocks/home";
+// DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
+import { DEMO_IMAGE_OVERRIDE, DEMO_POOLS, demoImageAt } from "@/data/demoImages";
 
 export default function SpaceBanner() {
   const [current, setCurrent] = useState(0);
@@ -10,11 +12,17 @@ export default function SpaceBanner() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="bg-background-100 rounded-xl overflow-hidden">
           <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 aspect-[4/3] lg:aspect-auto">
+            {/* DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거 (비율·이미지 소스) */}
+            <div className={`lg:w-1/2 ${DEMO_IMAGE_OVERRIDE ? "aspect-[16/9]" : "aspect-[4/3]"} lg:aspect-auto`}>
               <img
                 alt={banner.title}
-                className="w-full h-full object-cover"
-                src={banner.image}
+                className="w-full h-full object-cover object-center"
+                src={
+                  // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
+                  DEMO_IMAGE_OVERRIDE
+                    ? demoImageAt(DEMO_POOLS.spaceBanner, current)
+                    : banner.image
+                }
               />
             </div>
             <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
