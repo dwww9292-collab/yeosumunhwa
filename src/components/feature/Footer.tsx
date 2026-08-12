@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
 
+/** 공식 계정 확보 전까지는 아이콘만 비활성 상태로 노출한다. */
+const SNS_CHANNELS = [
+  { label: "블로그", icon: "ri-article-line" },
+  { label: "유튜브", icon: "ri-youtube-line" },
+  { label: "인스타그램", icon: "ri-instagram-line" },
+  { label: "페이스북", icon: "ri-facebook-line" },
+  { label: "카카오톡 채널", icon: "ri-kakao-talk-line" },
+];
+
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -36,14 +45,17 @@ export default function Footer() {
           {/* Logo & Contact - spans 5 cols */}
           <div className="lg:col-span-5">
             <span className="text-xl font-bold text-background-50 mb-4 block">여수문화재단</span>
+            {/* TODO: 재단 확정 정보 확보 후 입력. 기존 값은 양주문화재단(경기도 양주시,
+                031-828-9772, 사업자번호 153-82-00687) 정보라 삭제했다.
+                틀린 값을 노출하는 것보다 [확인필요] 표기가 안전하다. */}
             <address className="not-italic text-sm text-foreground-400 leading-relaxed space-y-1.5">
-              <p>(우)11461 경기도 여수시 광적면 부흥로618번길 303</p>
+              <p>주소: [확인필요]</p>
               <p className="flex flex-wrap gap-x-4 gap-y-1">
-                <span>대표전화: <strong className="text-foreground-200 font-medium">031-828-9772</strong></span>
-                <span>FAX: 031-828-9779</span>
+                <span>대표전화: <strong className="text-foreground-200 font-medium">[확인필요]</strong></span>
+                <span>FAX: [확인필요]</span>
               </p>
-              <p>사업자등록번호: 153-82-00687</p>
-              <p>대표자: 화재단</p>
+              <p>사업자등록번호: [확인필요]</p>
+              <p>대표자: [확인필요]</p>
             </address>
           </div>
 
@@ -79,56 +91,23 @@ export default function Footer() {
               <i className="ri-share-line text-accent-400"></i>
               SNS 채널
             </h4>
+            {/* TODO: 재단 공식 SNS 계정 확보 후 href 연결.
+                기존 링크는 양주문화재단 실계정(yjcf_kr, yangju_cf, yangjucf)이라
+                방문자를 타 기관으로 보내게 되어 전부 제거했다. */}
             <div className="flex flex-wrap gap-3">
-              <a
-                href="https://blog.naver.com/yjcf_kr"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="여수문화재단 블로그"
-                className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <i className="ri-article-line text-lg text-background-50"></i>
-              </a>
-              <a
-                href="https://www.youtube.com/@yangju_cf"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="여수문화재단 유튜브"
-                className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <i className="ri-youtube-line text-lg text-background-50"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/yangju_cf"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="여수문화재단 인스타그램"
-                className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <i className="ri-instagram-line text-lg text-background-50"></i>
-              </a>
-              <a
-                href="https://www.facebook.com/yangjucf"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="여수문화재단 페이스북"
-                className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <i className="ri-facebook-line text-lg text-background-50"></i>
-              </a>
-              <a
-                href="https://pf.kakao.com/_yangjucf"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="여수문화재단 카카오톡 채널"
-                className="w-10 h-10 rounded-lg bg-foreground-800 hover:bg-accent-500 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <i className="ri-kakao-talk-line text-lg text-background-50"></i>
-              </a>
+              {SNS_CHANNELS.map((sns) => (
+                <span
+                  key={sns.label}
+                  title={`${sns.label} (준비 중)`}
+                  aria-disabled="true"
+                  className="w-10 h-10 rounded-lg bg-foreground-800 opacity-50 flex items-center justify-center"
+                >
+                  <i className={`${sns.icon} text-lg text-background-50`}></i>
+                </span>
+              ))}
             </div>
             <p className="text-xs text-foreground-500 mt-4 leading-relaxed">
-              여수문화재단의 다양한 소식을<br />
-              SNS에서 빠르게 만나보세요.
+              공식 SNS 채널은 준비 중입니다.
             </p>
           </div>
         </div>
@@ -136,7 +115,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="py-4 border-t border-foreground-700 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-foreground-500">
-            COPYRIGHT ⓒ 2026 Yangju Cultural Foundation. ALL RIGHTS RESERVED.
+            COPYRIGHT ⓒ 2026 Yeosu Cultural Foundation. ALL RIGHTS RESERVED.
           </p>
           <button
             onClick={scrollToTop}

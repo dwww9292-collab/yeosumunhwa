@@ -43,7 +43,8 @@ export default function LocationPage() {
             </div>
             <div>
               <h3 className="text-sm font-bold text-gray-800 mb-1">주소</h3>
-              <p className="text-sm text-gray-600">(우)11461, 경기도 여수시 광적면 부흥로618번길 303</p>
+              {/* TODO: 재단 확정 주소 확보 후 입력. 기존 값은 양주문화재단(경기도 양주시) 주소였다. */}
+              <p className="text-sm text-gray-600">[확인필요]</p>
             </div>
           </div>
 

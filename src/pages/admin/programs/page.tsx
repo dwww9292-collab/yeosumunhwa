@@ -221,7 +221,7 @@ export default function AdminPrograms() {
               <input value={form.location ?? ""} onChange={(e) => setForm({ ...form, location: e.target.value || null })} className="input" />
             </Field>
             <Field label="문의처">
-              <input value={form.contact ?? ""} onChange={(e) => setForm({ ...form, contact: e.target.value || null })} className="input" placeholder="예: 문화사업팀 031-000-0000" />
+              <input value={form.contact ?? ""} onChange={(e) => setForm({ ...form, contact: e.target.value || null })} className="input" placeholder="예: 문화사업팀 061-000-0000" />
             </Field>
 
             <Field label="대표 이미지">

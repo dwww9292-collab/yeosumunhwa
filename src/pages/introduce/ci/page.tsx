@@ -196,7 +196,7 @@ export default function CIPage() {
                 여수의 전통과 오늘의 문화를 잇는 열린 문화플랫폼
               </p>
               <p className="text-xs text-gray-500">
-                Yangju Cultural Foundation — Bridging tradition and today's culture
+                Yeosu Cultural Foundation — Bridging tradition and today's culture
               </p>
             </div>
           </div>
@@ -322,8 +322,9 @@ export default function CIPage() {
                 <li>• 사전 승인 후 사용 가능</li>
                 <li>• 별도 가이드북 참조</li>
                 <li>• 홍보마케팅팀 문의</li>
-                <li>• 이메일: pr@yjcf.or.kr</li>
-                <li>• 전화: 031-000-0000</li>
+                {/* TODO: 재단 확정 연락처 확보 후 입력 (기존 값은 양주문화재단 도메인·경기 지역번호) */}
+                <li>• 이메일: [확인필요]</li>
+                <li>• 전화: [확인필요]</li>
               </ul>
             </div>
           </div>
