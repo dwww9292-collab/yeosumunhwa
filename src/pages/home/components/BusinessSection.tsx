@@ -2,14 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchPublicPrograms } from "@/features/programs/api";
 import type { ProgramRow } from "@/features/programs/types";
-// DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
-import {
-  DEMO_CARD_ASPECT,
-  DEMO_IMAGE_OVERRIDE,
-  DEMO_POOLS,
-  demoImageAt,
-} from "@/data/demoImages";
-
 const FALLBACK_IMAGE = "https://placehold.co/600x800/e5e7eb/9ca3af?text=No+Image";
 
 function getStatusColor(status: string) {
@@ -64,19 +56,11 @@ export default function BusinessSection() {
                 to={`/business/${item.id}`}
                 className="group bg-white rounded-lg overflow-hidden border border-background-200 hover:shadow-lg transition-all"
               >
-                {/* DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거 (비율·이미지 소스) */}
-                <div
-                  className={`relative ${DEMO_IMAGE_OVERRIDE ? DEMO_CARD_ASPECT : "aspect-[3/4]"} overflow-hidden bg-background-100`}
-                >
+                <div className="relative aspect-[3/4] overflow-hidden bg-background-100">
                   <img
                     alt={item.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    src={
-                      // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
-                      DEMO_IMAGE_OVERRIDE
-                        ? demoImageAt(DEMO_POOLS.business, index)
-                        : item.image_url || FALLBACK_IMAGE
-                    }
+                    src={item.image_url || FALLBACK_IMAGE}
                   />
                   <div className="absolute top-3 left-3 flex gap-1">
                     <span className={`text-xs font-medium px-2 py-1 rounded text-white ${getStatusColor(item.status)}`}>

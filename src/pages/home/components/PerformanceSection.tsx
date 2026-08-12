@@ -2,14 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { usePublicEvents } from "@/features/events/useEvents";
 import type { EventType } from "@/features/events/types";
-// DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
-import {
-  DEMO_CARD_ASPECT,
-  DEMO_IMAGE_OVERRIDE,
-  DEMO_POOLS,
-  demoImageAt,
-} from "@/data/demoImages";
-
 const TABS: { label: string; type: EventType }[] = [
   { label: "공연", type: "performance" },
   { label: "전시", type: "exhibition" },
@@ -67,19 +59,11 @@ export default function PerformanceSection() {
                 to={`/business/${activeType}/${item.id}`}
                 className="group bg-white rounded-lg overflow-hidden border border-background-200 hover:shadow-lg transition-all"
               >
-                {/* DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거 (비율·이미지 소스) */}
-                <div
-                  className={`relative ${DEMO_IMAGE_OVERRIDE ? DEMO_CARD_ASPECT : "aspect-[3/4]"} overflow-hidden bg-background-100`}
-                >
+                <div className="relative aspect-[3/4] overflow-hidden bg-background-100">
                   <img
                     alt={item.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    src={
-                      // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거
-                      DEMO_IMAGE_OVERRIDE
-                        ? demoImageAt(DEMO_POOLS.performance, index)
-                        : item.image
-                    }
+                    src={item.image}
                   />
                   <div className="absolute top-3 left-3">
                     <span className={`text-xs font-medium px-2 py-1 rounded text-white ${tagColor(item.tag)}`}>
