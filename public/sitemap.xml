@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  여수문화재단 홈페이지 sitemap
+
+  TODO: 실도메인 확정 시 아래 문자열을 일괄 치환할 것
+        https://REPLACE-WITH-REAL-DOMAIN  →  https://<실도메인>
+        치환 후 public/robots.txt 의 Sitemap 항목도 함께 활성화한다.
+
+  주의
+  - 이 프로젝트는 SPA(Vite + react-router-dom)라 라우트가 빌드 산출물에
+    개별 HTML로 존재하지 않는다. 따라서 이 sitemap 은 수동 관리 대상이며,
+    라우트를 추가·삭제할 때 src/router/config.tsx 와 함께 갱신해야 한다.
+  - 자동화가 필요하면 vite-plugin-sitemap 계열 플러그인 도입을 검토할 것.
+    다만 SPA 상태로는 크롤러가 각 URL에서 동일한 index.html 메타를 받으므로,
+    프리렌더(STEP 1.5) 도입과 함께 처리하는 편이 효과적이다.
+  - 상세 페이지(/community/notice/:id, /business/performance/:id 등)는
+    Supabase 콘텐츠라 여기 나열하지 않았다. 프리렌더 도입 시 함께 검토.
+  - 관리자(/admin/*)·회원(/member/*)·마이페이지는 의도적으로 제외했다.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://REPLACE-WITH-REAL-DOMAIN/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 알림마당 -->
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/community/notice</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/community/news</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/community/archive</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/community/data</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- 대관안내 -->
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/rent/status</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/rent/space</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- 문화사업 · 공연/전시/축제 -->
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/business</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/business/performance</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/business/exhibition</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/business/festival</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 재단소개 -->
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/greeting</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/establishment</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/organization</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/ci</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/philosophy</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/announce</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/introduce/location</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+
+  <!-- 이용안내 -->
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/policy/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/policy/video</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/policy/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://REPLACE-WITH-REAL-DOMAIN/policy/email</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+</urlset>

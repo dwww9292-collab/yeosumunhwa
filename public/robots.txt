@@ -1,0 +1,29 @@
+# 여수문화재단 홈페이지
+#
+# TODO: 실도메인 확정 시 아래 두 가지를 함께 바꿀 것
+#   1) 이 파일의 "Disallow: /" 를 제거하고 아래 [실도메인 확정 후] 블록으로 교체
+#   2) index.html 의 <meta name="robots" content="noindex, nofollow"> 제거 + canonical 복구
+#   3) sitemap.xml 의 호스트 플레이스홀더 치환
+#
+# 현재는 임시 도메인(vercel.app) 색인을 막는다.
+# 임시 도메인이 색인되면 실도메인 이전 시 중복 콘텐츠·평가 분산 문제가 생긴다.
+
+User-agent: *
+Disallow: /
+
+# ------------------------------------------------------------------
+# [실도메인 확정 후] 아래 내용으로 교체
+# ------------------------------------------------------------------
+# User-agent: *
+# Allow: /
+#
+# # 관리자 영역은 영구 차단
+# Disallow: /admin
+# Disallow: /admin/
+#
+# # 로그인·마이페이지 등 개인 영역
+# Disallow: /member/
+# Disallow: /mypage
+# Disallow: /reset-password
+#
+# Sitemap: https://<실도메인>/sitemap.xml
