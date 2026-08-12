@@ -31,11 +31,4 @@ export const realNewsItems = [
 ];
 
 // 협력기관 — 실제 여수시 로고
-export const realPartners = [
-  {
-    id: 9001,
-    name: "여수시청",
-    link: `${Y}/www/index.do`,
-    image: `${Y}/site/www/images/common/yangju_logo.png`,
-  },
-];
+export const realPartners: { id: number; name: string; link: string; image: string }[] = [];

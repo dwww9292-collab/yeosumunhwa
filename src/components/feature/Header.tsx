@@ -88,7 +88,7 @@ export default function Header() {
           <img
             alt="여수문화재단"
             className="h-10 md:h-12"
-            src="https://storage.readdy-site.link/project_files/82038e88-bc77-4e0d-916f-e97740fcc1f6/44994b6e-d2cb-414b-983e-4d8108dcb071_---.png?v=05b6e11fe497f095af4bda6ced60f4a8"
+            src="/images/logo.png"
           />
         </a>
 

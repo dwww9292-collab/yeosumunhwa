@@ -48,12 +48,12 @@ function group(name: keyof typeof DEMO_IMAGE_GROUPS): string[] {
  * 5초 간격이라 6장이면 한 바퀴 30초.
  */
 export const DEMO_HERO_IMAGES: string[] = [
+  "/images/hero-1.png",
   DEMO_IMAGES["odongdo-1"],
-  DEMO_IMAGES["expo-2"],
-  DEMO_IMAGES["bigo-2"],
+  DEMO_IMAGES["odongdo-2"],
   DEMO_IMAGES["odongdo-3"],
-  DEMO_IMAGES["expo-4"],
-  DEMO_IMAGES["bigo-4"],
+  DEMO_IMAGES["odongdo-4"],
+  DEMO_IMAGES["odongdo-5"],
 ].filter(Boolean);
 
 /** 섹션별 카드 이미지 풀 */
