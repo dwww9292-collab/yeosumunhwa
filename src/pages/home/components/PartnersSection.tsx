@@ -35,7 +35,7 @@ export default function PartnersSection() {
                 href={partner.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center bg-white border border-background-200 rounded-lg p-4 h-20 hover:shadow-sm transition-shadow"
+                className="flex items-center justify-center bg-white border border-background-200 rounded-lg p-3 h-28 md:h-32 hover:shadow-sm transition-shadow"
               >
                 <img
                   alt={partner.name}
