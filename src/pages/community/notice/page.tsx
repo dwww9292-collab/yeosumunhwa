@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SubPageLayout from "@/components/feature/SubPageLayout";
-import { noticeItems } from "@/mocks/community";
+import { isNewPost, numberMap, usePublicPosts } from "@/features/posts/usePosts";
 import { matchSearch } from "@/lib/search";
 
 const communityTabs = [
@@ -17,9 +17,11 @@ export default function NoticePage() {
   const [page, setPage] = useState(1);
   const perPage = 10;
   const navigate = useNavigate();
+  const { items, loading } = usePublicPosts("notice");
+  const numbers = numberMap(items);
 
-  const filtered = noticeItems.filter((item) =>
-    matchSearch(searchQuery, searchType, item.title, [item.date]),
+  const filtered = items.filter((item) =>
+    matchSearch(searchQuery, searchType, item.title, [item.body, item.published_at]),
   );
 
   const totalPages = Math.ceil(filtered.length / perPage);
@@ -65,32 +67,40 @@ export default function NoticePage() {
 
       {/* List */}
       <ul className="border-t border-gray-200">
-        {currentItems.map((item) => (
-          <li key={item.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-            <a
-              href={`/community/notice/${item.id}`}
-              onClick={(e) => { e.preventDefault(); navigate(`/community/notice/${item.id}`); }}
-              className="flex items-center gap-4 py-4 px-2 cursor-pointer"
-            >
-              <div className="flex-shrink-0 w-10 text-center">
-                {item.isNotice ? (
-                  <i className="ri-notification-3-line text-lg text-gray-400 mx-auto block"></i>
-                ) : (
-                  <span className="text-sm text-gray-500">{item.num}</span>
-                )}
-              </div>
-              <div className="flex-1 flex items-center gap-2 min-w-0">
-                <span className="text-sm text-gray-800 truncate">{item.title}</span>
-                {item.isNew && (
-                  <span className="flex-shrink-0 text-xs font-bold text-white bg-[#1a4fa0] rounded-full w-5 h-5 flex items-center justify-center">
-                    N
-                  </span>
-                )}
-              </div>
-              <div className="flex-shrink-0 text-sm text-gray-400 font-mono">{item.date}</div>
-            </a>
+        {loading ? (
+          <li className="py-16 text-center text-gray-400">
+            <i className="ri-loader-4-line animate-spin text-2xl"></i>
           </li>
-        ))}
+        ) : currentItems.length === 0 ? (
+          <li className="py-16 text-center text-sm text-gray-400">등록된 게시물이 없습니다.</li>
+        ) : (
+          currentItems.map((item) => (
+            <li key={item.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <a
+                href={`/community/notice/${item.id}`}
+                onClick={(e) => { e.preventDefault(); navigate(`/community/notice/${item.id}`); }}
+                className="flex items-center gap-4 py-4 px-2 cursor-pointer"
+              >
+                <div className="flex-shrink-0 w-10 text-center">
+                  {item.is_pinned ? (
+                    <i className="ri-notification-3-line text-lg text-gray-400 mx-auto block"></i>
+                  ) : (
+                    <span className="text-sm text-gray-500">{numbers.get(item.id)}</span>
+                  )}
+                </div>
+                <div className="flex-1 flex items-center gap-2 min-w-0">
+                  <span className="text-sm text-gray-800 truncate">{item.title}</span>
+                  {isNewPost(item.published_at) && (
+                    <span className="flex-shrink-0 text-xs font-bold text-white bg-[#1a4fa0] rounded-full w-5 h-5 flex items-center justify-center">
+                      N
+                    </span>
+                  )}
+                </div>
+                <div className="flex-shrink-0 text-sm text-gray-400 font-mono">{item.published_at}</div>
+              </a>
+            </li>
+          ))
+        )}
       </ul>
 
       {/* Pagination */}

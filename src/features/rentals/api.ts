@@ -3,13 +3,20 @@ import type { RentalApplication, RentalInput, RentalStatus } from "./types";
 
 const TABLE = "rental_applications";
 
-/** 공개 대관현황: 승인 건의 비민감 정보만 (public_rental_bookings 뷰) */
+/**
+ * 공개 대관현황 (public_rental_bookings 뷰)
+ * - 승인된 대관 신청의 비민감 정보
+ * - 관리자가 직접 등록한 일정(자체행사 · 휴관 등)
+ */
 export interface PublicBooking {
   id: string;
   space: string;
+  hall: string | null;
   use_date_from: string;
   use_date_to: string | null;
   title: string;
+  is_closed: boolean;
+  source: "rental" | "schedule";
 }
 
 export async function fetchApprovedBookings(): Promise<PublicBooking[]> {

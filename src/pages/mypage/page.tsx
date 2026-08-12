@@ -21,7 +21,7 @@ const statusStyle: Record<string, string> = {
 export default function MyPage() {
   useNoIndex();
   const navigate = useNavigate();
-  const { session, signOut } = useAuth();
+  const { session, username, signOut } = useAuth();
   const [rows, setRows] = useState<RentalApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -38,7 +38,7 @@ export default function MyPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">나의 대관 신청 현황</h2>
-          <p className="text-sm text-gray-500 mt-1">{session?.user.email}</p>
+          <p className="text-sm text-gray-500 mt-1">{username ?? session?.user.email}</p>
         </div>
         <div className="flex gap-2">
           <button onClick={() => navigate("/rent/apply")} className="bg-[#1a4fa0] text-white text-sm rounded-lg px-4 py-2 hover:bg-[#163f82] cursor-pointer">

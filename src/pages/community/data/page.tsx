@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SubPageLayout from "@/components/feature/SubPageLayout";
-import { dataItems } from "@/mocks/community";
+import { numberMap, primaryExt, usePublicPosts } from "@/features/posts/usePosts";
 import { matchSearch } from "@/lib/search";
 
 const communityTabs = [
@@ -25,8 +25,11 @@ export default function DataPage() {
   const perPage = 10;
   const navigate = useNavigate();
 
-  const filtered = dataItems.filter((item) =>
-    matchSearch(searchQuery, searchType, item.title, [item.fileType, item.date]),
+  const { items, loading } = usePublicPosts("data");
+  const numbers = numberMap(items);
+
+  const filtered = items.filter((item) =>
+    matchSearch(searchQuery, searchType, item.title, [item.body, primaryExt(item), item.published_at]),
   );
 
   const totalPages = Math.ceil(filtered.length / perPage);
@@ -73,33 +76,53 @@ export default function DataPage() {
 
       {/* List */}
       <ul className="border-t border-gray-200">
-        {currentItems.map((item) => (
-          <li key={item.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-            <a href={`/community/data/${item.id}`} onClick={(e) => { e.preventDefault(); navigate(`/community/data/${item.id}`); }} className="flex items-center gap-4 py-4 px-2 cursor-pointer">
-              <div className="flex-shrink-0 w-10 text-center">
-                <span className="text-sm text-gray-500">{item.num}</span>
-              </div>
-              <div className="flex-1 flex items-center gap-3 min-w-0">
-                <span className="text-sm text-gray-800 truncate">{item.title}</span>
-                {item.fileType && (
-                  <span
-                    className={`flex-shrink-0 text-xs font-bold px-2 py-0.5 rounded ${
-                      fileTypeColor[item.fileType] || "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    {item.fileType}
-                  </span>
-                )}
-              </div>
-              <div className="flex-shrink-0 flex items-center gap-3">
-                <span className="text-sm text-gray-400 font-mono">{item.date}</span>
-                <button className="text-gray-400 hover:text-[#1a4fa0] transition-colors cursor-pointer">
-                  <i className="ri-download-line"></i>
-                </button>
-              </div>
-            </a>
+        {loading ? (
+          <li className="py-16 text-center text-gray-400">
+            <i className="ri-loader-4-line animate-spin text-2xl"></i>
           </li>
-        ))}
+        ) : currentItems.length === 0 ? (
+          <li className="py-16 text-center text-sm text-gray-400">등록된 자료가 없습니다.</li>
+        ) : (
+          currentItems.map((item) => {
+            const ext = primaryExt(item);
+            const file = item.attachments?.[0];
+            return (
+              <li key={item.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <a href={`/community/data/${item.id}`} onClick={(e) => { e.preventDefault(); navigate(`/community/data/${item.id}`); }} className="flex items-center gap-4 py-4 px-2 cursor-pointer">
+                  <div className="flex-shrink-0 w-10 text-center">
+                    <span className="text-sm text-gray-500">{numbers.get(item.id)}</span>
+                  </div>
+                  <div className="flex-1 flex items-center gap-3 min-w-0">
+                    <span className="text-sm text-gray-800 truncate">{item.title}</span>
+                    {ext && (
+                      <span
+                        className={`flex-shrink-0 text-xs font-bold px-2 py-0.5 rounded ${
+                          fileTypeColor[ext] || "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {ext}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex-shrink-0 flex items-center gap-3">
+                    <span className="text-sm text-gray-400 font-mono">{item.published_at}</span>
+                    {file?.url ? (
+                      <span
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(file.url!, "_blank", "noopener"); }}
+                        title={`${file.name} 내려받기`}
+                        className="text-gray-400 hover:text-[#1a4fa0] transition-colors cursor-pointer"
+                      >
+                        <i className="ri-download-line"></i>
+                      </span>
+                    ) : (
+                      <i className="ri-download-line text-gray-200"></i>
+                    )}
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        )}
       </ul>
 
       {/* Pagination */}

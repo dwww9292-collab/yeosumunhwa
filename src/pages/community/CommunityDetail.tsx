@@ -1,6 +1,10 @@
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SubPageLayout from "@/components/feature/SubPageLayout";
-import { noticeItems, newsItems, archiveItems, dataItems } from "@/mocks/community";
+import { incrementView } from "@/features/posts/api";
+import { usePublicPosts } from "@/features/posts/usePosts";
+import { BOARD_LABEL, BOARD_PATH } from "@/features/posts/types";
+import type { BoardKey, PostRow } from "@/features/posts/types";
 
 const communityTabs = [
   { label: "공지사항", href: "/community/notice" },
@@ -9,37 +13,7 @@ const communityTabs = [
   { label: "자료실", href: "/community/data" },
 ];
 
-export type CommunityBoard = "notice" | "news" | "archive" | "data";
-
-interface CommunityItem {
-  id: number;
-  num?: number;
-  title: string;
-  date: string;
-  isNew?: boolean;
-  isNotice?: boolean;
-  image?: string;
-  type?: string;
-  fileType?: string;
-  body?: string;
-}
-
-// 본문이 별도로 등록되지 않은 게시물의 안내 문구(프로토타입용 샘플 본문)
-function buildBody(item: CommunityItem, label: string): string {
-  if (item.body) return item.body;
-  return [
-    `「${item.title}」 관련 안내드립니다.`,
-    `자세한 내용은 첨부파일 및 여수문화재단 홈페이지(${label})를 통해 확인하실 수 있습니다. 본 게시물은 ${item.date}에 등록되었으며, 문의 사항은 재단 대표전화(031-828-9772)로 연락 주시기 바랍니다.`,
-    `※ 본 페이지는 시연용 프로토타입으로, 실제 본문은 관리자 페이지에서 등록·수정할 수 있도록 구성됩니다.`,
-  ].join("\n\n");
-}
-
-const BOARDS: Record<CommunityBoard, { label: string; path: string; items: CommunityItem[] }> = {
-  notice: { label: "공지사항", path: "/community/notice", items: noticeItems },
-  news: { label: "보도자료", path: "/community/news", items: newsItems },
-  archive: { label: "재단소식", path: "/community/archive", items: archiveItems },
-  data: { label: "자료실", path: "/community/data", items: dataItems },
-};
+export type CommunityBoard = BoardKey;
 
 const fileTypeColor: Record<string, string> = {
   PDF: "bg-red-100 text-red-600",
@@ -51,19 +25,39 @@ const fileTypeColor: Record<string, string> = {
 export default function CommunityDetail({ board }: { board: CommunityBoard }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { label, path, items } = BOARDS[board];
+  const label = BOARD_LABEL[board];
+  const path = BOARD_PATH[board];
 
-  const idx = items.findIndex((a) => String(a.id) === id);
-  const item = idx >= 0 ? items[idx] : null;
-  const next = idx > 0 ? items[idx - 1] : null;
-  const prev = idx >= 0 && idx < items.length - 1 ? items[idx + 1] : null;
+  // 목록을 그대로 재사용해 이전/다음 글까지 한 번에 처리한다
+  const { items, loading } = usePublicPosts(board);
+
+  const { item, prev, next } = useMemo(() => {
+    const idx = items.findIndex((p) => p.id === id);
+    return {
+      item: idx >= 0 ? items[idx] : null,
+      next: idx > 0 ? items[idx - 1] : null,
+      prev: idx >= 0 && idx < items.length - 1 ? items[idx + 1] : null,
+    };
+  }, [items, id]);
+
+  // 조회수는 글당 한 번만 (실패해도 본문 표시는 막지 않는다)
+  const [counted, setCounted] = useState<string | null>(null);
+  useEffect(() => {
+    if (!item || counted === item.id) return;
+    setCounted(item.id);
+    incrementView(item.id).catch(() => {});
+  }, [item, counted]);
 
   return (
     <SubPageLayout categoryLabel="알림마당" categoryPath="/community/notice" currentLabel={label} tabs={communityTabs}>
       <h2 className="text-2xl font-bold text-center text-gray-900 mb-10">{label}</h2>
 
       <div className="max-w-3xl mx-auto">
-        {!item ? (
+        {loading ? (
+          <div className="py-24 text-center text-gray-400">
+            <i className="ri-loader-4-line animate-spin text-2xl"></i>
+          </div>
+        ) : !item ? (
           <div className="py-24 text-center text-gray-500">
             <p>존재하지 않는 게시물입니다.</p>
             <button onClick={() => navigate(path)} className="mt-6 px-5 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">목록으로</button>
@@ -72,28 +66,38 @@ export default function CommunityDetail({ board }: { board: CommunityBoard }) {
           <>
             {/* 제목 영역 */}
             <div className="border-t-2 border-gray-800 border-b border-gray-200 py-5">
-              <div className="flex items-center gap-2 mb-2">
-                {item.fileType && (
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded ${fileTypeColor[item.fileType] || "bg-gray-100 text-gray-600"}`}>{item.fileType}</span>
-                )}
-                {item.isNew && <span className="text-xs font-bold text-white bg-[#1a4fa0] rounded-full w-5 h-5 inline-flex items-center justify-center">N</span>}
-              </div>
+              {item.is_pinned && (
+                <span className="inline-block mb-2 text-xs font-bold px-2 py-0.5 rounded bg-[#1a4fa0]/10 text-[#1a4fa0]">
+                  공지
+                </span>
+              )}
               <h3 className="text-lg md:text-xl font-bold text-gray-900">{item.title}</h3>
-              <p className="text-xs text-gray-400 mt-2">작성일 {item.date}</p>
+              <p className="text-xs text-gray-400 mt-2">
+                작성일 {item.published_at} · 조회 {item.view_count}
+              </p>
             </div>
 
             {/* 첨부파일 */}
-            <div className="flex items-center gap-2 py-3 border-b border-gray-100 text-sm">
+            <div className="flex flex-wrap items-center gap-2 py-3 border-b border-gray-100 text-sm">
               <i className="ri-attachment-2 text-gray-400"></i>
               <span className="text-gray-400">첨부파일</span>
-              {item.fileType ? (
-                <button
-                  onClick={() => alert("첨부파일 다운로드 기능은 자료 등록(관리자) 연동 후 제공됩니다.")}
-                  className="text-[#1a4fa0] hover:underline cursor-pointer flex items-center gap-1"
-                >
-                  <i className="ri-download-2-line"></i>
-                  {item.title}.{item.fileType.toLowerCase()}
-                </button>
+              {item.attachments?.length ? (
+                item.attachments.map((att, i) => (
+                  <span key={`${att.name}-${i}`} className="inline-flex items-center gap-1">
+                    <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${fileTypeColor[att.ext] || "bg-gray-100 text-gray-600"}`}>
+                      {att.ext}
+                    </span>
+                    {att.url ? (
+                      <a href={att.url} target="_blank" rel="noopener noreferrer" className="text-[#1a4fa0] hover:underline">
+                        {att.name}
+                      </a>
+                    ) : (
+                      <span className="text-gray-400" title="관리자 페이지에서 파일을 등록해 주세요.">
+                        {att.name}
+                      </span>
+                    )}
+                  </span>
+                ))
               ) : (
                 <span className="text-gray-400">등록된 첨부파일이 없습니다.</span>
               )}
@@ -101,11 +105,18 @@ export default function CommunityDetail({ board }: { board: CommunityBoard }) {
 
             {/* 본문 */}
             <div className="py-10 min-h-[160px]">
-              {item.image && (
-                <img src={item.image} alt={item.title} className="w-full max-w-xl mx-auto rounded-lg mb-6" />
+              {item.media_url && (
+                <p className="mb-6 text-sm">
+                  <a href={item.media_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#1a4fa0] hover:underline">
+                    <i className="ri-play-circle-line"></i> 영상 보러가기
+                  </a>
+                </p>
+              )}
+              {item.image_url && (
+                <img src={item.image_url} alt={item.title} className="w-full max-w-xl mx-auto rounded-lg mb-6" />
               )}
               <p className="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
-                {buildBody(item, label)}
+                {item.body?.trim() ? item.body : "등록된 본문이 없습니다."}
               </p>
             </div>
 
@@ -132,8 +143,8 @@ function NavRow({
   onGo,
 }: {
   direction: string;
-  target: CommunityItem | null;
-  onGo: (id: number) => void;
+  target: PostRow | null;
+  onGo: (id: string) => void;
 }) {
   return (
     <div className="flex items-center gap-4 px-2 py-3 border-b border-gray-100">

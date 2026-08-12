@@ -11,7 +11,7 @@ export default function AdminLogin() {
   const location = useLocation();
   const from = (location.state as { from?: string } | null)?.from ?? "/admin";
 
-  const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -25,10 +25,10 @@ export default function AdminLogin() {
     e.preventDefault();
     setError(null);
     setSubmitting(true);
-    const { error, isAdmin } = await signIn(email.trim(), password);
+    const { error, isAdmin } = await signIn(userId.trim(), password);
     if (error) {
       setSubmitting(false);
-      setError(error);
+      setError("아이디 또는 비밀번호를 확인해주세요.");
       return;
     }
     if (!isAdmin) {
@@ -46,18 +46,20 @@ export default function AdminLogin() {
       <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="text-center mb-8">
           <h1 className="text-xl font-bold text-gray-900">여수문화재단 관리자</h1>
-          <p className="text-sm text-gray-500 mt-1">관리자 계정으로 로그인하세요.</p>
+          <p className="text-sm text-gray-500 mt-1">관리자 아이디로 로그인하세요.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">아이디</label>
             <input
-              type="email"
+              type="text"
               required
               autoComplete="username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              autoCapitalize="none"
+              spellCheck={false}
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a4fa0]/40"
             />
           </div>

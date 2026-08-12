@@ -2,17 +2,46 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { useNoIndex } from "@/features/seo/useNoIndex";
 
-const navItems = [
-  { label: "대시보드", to: "/admin", icon: "ri-dashboard-line", end: true },
-  { label: "공연·전시·축제", to: "/admin/events", icon: "ri-calendar-event-line" },
-  { label: "축제 배너", to: "/admin/hero", icon: "ri-slideshow-line" },
-  { label: "사업소개", to: "/admin/programs", icon: "ri-briefcase-line" },
-  { label: "대관 신청", to: "/admin/rentals", icon: "ri-building-line" },
-  { label: "회원(관리자) 관리", to: "/admin/members", icon: "ri-team-line", superOnly: true },
+interface NavItem {
+  label: string;
+  to: string;
+  icon: string;
+  end?: boolean;
+  superOnly?: boolean;
+}
+
+const navGroups: { title: string; items: NavItem[] }[] = [
+  {
+    title: "현황",
+    items: [{ label: "대시보드", to: "/admin", icon: "ri-dashboard-line", end: true }],
+  },
+  {
+    title: "콘텐츠 관리",
+    items: [
+      { label: "알림마당(게시판)", to: "/admin/posts", icon: "ri-article-line" },
+      { label: "공연·전시·축제", to: "/admin/events", icon: "ri-calendar-event-line" },
+      { label: "사업소개", to: "/admin/programs", icon: "ri-briefcase-line" },
+      { label: "축제 배너", to: "/admin/hero", icon: "ri-slideshow-line" },
+    ],
+  },
+  {
+    title: "대관 관리",
+    items: [
+      { label: "대관 신청", to: "/admin/rentals", icon: "ri-building-line" },
+      { label: "대관현황 일정", to: "/admin/schedules", icon: "ri-calendar-schedule-line" },
+    ],
+  },
+  {
+    title: "회원 관리",
+    items: [
+      { label: "회원", to: "/admin/users", icon: "ri-user-line" },
+      { label: "관리자 계정", to: "/admin/members", icon: "ri-shield-user-line", superOnly: true },
+    ],
+  },
 ];
 
 export default function AdminLayout() {
-  const { profile, signOut } = useAuth();
+  const { profile, username, signOut } = useAuth();
   const navigate = useNavigate();
   useNoIndex();
 
@@ -28,26 +57,39 @@ export default function AdminLayout() {
         <div className="h-16 flex items-center px-5 border-b border-gray-100">
           <span className="font-bold text-gray-900">관리자 콘솔</span>
         </div>
-        <nav className="flex-1 p-3 space-y-1">
-          {navItems
-            .filter((item) => !item.superOnly || profile?.role === "super_admin")
-            .map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.end}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                    isActive
-                      ? "bg-[#1a4fa0] text-white"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`
-                }
-              >
-                <i className={`${item.icon} text-lg`}></i>
-                {item.label}
-              </NavLink>
-            ))}
+        <nav className="flex-1 overflow-y-auto p-3 space-y-4">
+          {navGroups.map((group) => {
+            const items = group.items.filter(
+              (item) => !item.superOnly || profile?.role === "super_admin",
+            );
+            if (items.length === 0) return null;
+            return (
+              <div key={group.title}>
+                <p className="px-3 pb-1 text-[11px] font-medium text-gray-400 tracking-wide">
+                  {group.title}
+                </p>
+                <div className="space-y-1">
+                  {items.map((item) => (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      end={item.end}
+                      className={({ isActive }) =>
+                        `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                          isActive
+                            ? "bg-[#1a4fa0] text-white"
+                            : "text-gray-600 hover:bg-gray-100"
+                        }`
+                      }
+                    >
+                      <i className={`${item.icon} text-lg`}></i>
+                      {item.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </nav>
         <div className="p-3 border-t border-gray-100">
           <div className="px-3 py-2 text-xs text-gray-500">
@@ -55,7 +97,15 @@ export default function AdminLayout() {
             <span className="ml-1 text-gray-400">
               ({profile?.role === "super_admin" ? "최고관리자" : "편집자"})
             </span>
+            {username && <span className="block text-gray-400 mt-0.5">{username}</span>}
           </div>
+          <NavLink
+            to="/"
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 cursor-pointer"
+          >
+            <i className="ri-external-link-line text-lg"></i>
+            홈페이지 보기
+          </NavLink>
           <button
             onClick={handleSignOut}
             className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 cursor-pointer"

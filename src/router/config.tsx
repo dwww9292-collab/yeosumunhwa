@@ -30,6 +30,9 @@ import AdminPrograms from "../pages/admin/programs/page";
 import AdminHero from "../pages/admin/hero/page";
 import AdminRentals from "../pages/admin/rentals/page";
 import AdminMembers from "../pages/admin/members/page";
+import AdminPosts from "../pages/admin/posts/page";
+import AdminUsers from "../pages/admin/users/page";
+import AdminSchedules from "../pages/admin/schedules/page";
 import ProtectedRoute from "../features/auth/ProtectedRoute";
 import RequireAuth from "../features/auth/RequireAuth";
 import MemberLogin from "../pages/member/login/page";
@@ -91,10 +94,13 @@ const routes: RouteObject[] = [
     ),
     children: [
       { index: true, element: <AdminDashboard /> },
+      { path: "posts", element: <AdminPosts /> },
       { path: "events", element: <AdminEvents /> },
       { path: "programs", element: <AdminPrograms /> },
       { path: "hero", element: <AdminHero /> },
       { path: "rentals", element: <AdminRentals /> },
+      { path: "schedules", element: <AdminSchedules /> },
+      { path: "users", element: <AdminUsers /> },
       {
         path: "members",
         element: (

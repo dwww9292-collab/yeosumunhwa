@@ -7,6 +7,13 @@ function ymd(year: number, month: number, day: number): string {
   return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
+/** 캘린더 한 칸에 표시되는 일정 */
+interface DayEntry {
+  title: string;
+  hall: string | null;
+  isClosed: boolean;
+}
+
 const rentTabs = [
   { label: "대관현황", href: "/rent/status" },
   { label: "대관신청", href: "/rent/apply" },
@@ -37,9 +44,9 @@ export default function RentStatusPage() {
       .catch(() => setLoadError(true));
   }, []);
 
-  // 선택 시설의 승인 예약을 'YYYY-MM-DD' → 제목 목록 으로 펼친다(기간 신청 포함)
+  // 선택 시설의 일정을 'YYYY-MM-DD' → 항목 목록 으로 펼친다(기간 신청 포함)
   const bookingsByDate = useMemo(() => {
-    const map = new Map<string, string[]>();
+    const map = new Map<string, DayEntry[]>();
     for (const b of bookings) {
       if (b.space !== selectedVenue) continue;
       const from = new Date(`${b.use_date_from}T00:00:00`);
@@ -47,7 +54,7 @@ export default function RentStatusPage() {
       for (let d = new Date(from); d <= to; d.setDate(d.getDate() + 1)) {
         const key = ymd(d.getFullYear(), d.getMonth() + 1, d.getDate());
         const list = map.get(key) ?? [];
-        list.push(b.title);
+        list.push({ title: b.title, hall: b.hall, isClosed: b.is_closed });
         map.set(key, list);
       }
     }
@@ -57,7 +64,7 @@ export default function RentStatusPage() {
   const daysInMonth = getDaysInMonth(year, month);
   const firstDay = getFirstDayOfMonth(year, month);
 
-  const getEventsForDay = (day: number): string[] => bookingsByDate.get(ymd(year, month, day)) ?? [];
+  const getEventsForDay = (day: number): DayEntry[] => bookingsByDate.get(ymd(year, month, day)) ?? [];
 
   const prevMonth = () => {
     if (month === 1) { setYear(year - 1); setMonth(12); }
@@ -156,7 +163,7 @@ export default function RentStatusPage() {
             <i className="ri-arrow-right-s-line"></i>
           </button>
         </div>
-        <span className="text-xs text-gray-400">승인된 대관 일정이 표시됩니다.</span>
+        <span className="text-xs text-gray-400">승인된 대관 신청과 재단 운영 일정이 표시됩니다.</span>
       </div>
 
       {/* Calendar Table */}
@@ -207,13 +214,20 @@ export default function RentStatusPage() {
                             ) : day}
                           </div>
                           <ul className="space-y-0.5">
-                            {events.map((title, ei) => (
+                            {events.map((entry, ei) => (
                               <li key={ei}>
                                 <span
-                                  className="block text-xs text-gray-600 bg-[#1a4fa0]/5 border-l-2 border-[#1a4fa0]/50 px-1 py-0.5 leading-tight truncate"
-                                  title={title}
+                                  className={`block text-xs px-1 py-0.5 leading-tight truncate border-l-2 ${
+                                    entry.isClosed
+                                      ? "text-red-600 bg-red-50 border-red-300"
+                                      : "text-gray-600 bg-[#1a4fa0]/5 border-[#1a4fa0]/50"
+                                  }`}
+                                  title={entry.hall ? `[${entry.hall}] ${entry.title}` : entry.title}
                                 >
-                                  {title}
+                                  {entry.hall && (
+                                    <span className="text-gray-400">[{entry.hall}] </span>
+                                  )}
+                                  {entry.title}
                                 </span>
                               </li>
                             ))}
@@ -236,7 +250,7 @@ export default function RentStatusPage() {
       ) : (
         bookingsByDate.size === 0 && (
           <p className="mt-4 text-center text-xs text-gray-400">
-            {selectedVenue}의 승인된 대관 일정이 아직 없습니다.
+            {selectedVenue}의 등록된 일정이 아직 없습니다.
           </p>
         )
       )}
@@ -247,9 +261,10 @@ export default function RentStatusPage() {
           <dt className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
             <i className="ri-team-line"></i>담당부서 : 공연전시팀
           </dt>
+          {/* TODO: 재단 확정 연락처 확보 후 입력. 기존 값은 경기(031) 지역번호였다. */}
           <dd className="text-sm text-gray-600 flex items-center gap-2">
             <i className="ri-phone-line"></i>
-            문의전화 : 031-950-8434(여수우정행복센터, 여수사랑행복센터), 031-950-8435(시민회관, 여수아트홀)
+            문의전화 : [확인필요]
           </dd>
         </dl>
       </div>

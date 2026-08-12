@@ -6,9 +6,11 @@ export default function MemberLogin() {
   const { signIn, session, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: string } | null)?.from ?? "/mypage";
+  const state = location.state as { from?: string; notice?: string } | null;
+  const from = state?.from ?? "/mypage";
+  const notice = state?.notice ?? null;
 
-  const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -21,10 +23,10 @@ export default function MemberLogin() {
     e.preventDefault();
     setError(null);
     setSubmitting(true);
-    const { error } = await signIn(email.trim(), password);
+    const { error } = await signIn(userId.trim(), password);
     setSubmitting(false);
     if (error) {
-      setError("이메일 또는 비밀번호를 확인해주세요.");
+      setError("아이디 또는 비밀번호를 확인해주세요.");
       return;
     }
     navigate(from, { replace: true });
@@ -38,15 +40,23 @@ export default function MemberLogin() {
           <p className="text-sm text-gray-500 mt-1">여수문화재단 회원 로그인</p>
         </div>
 
+        {notice && (
+          <p className="mb-4 text-sm text-[#1a4fa0] bg-[#1a4fa0]/5 border border-[#1a4fa0]/20 rounded px-3 py-2">
+            {notice}
+          </p>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">아이디</label>
             <input
-              type="email"
+              type="text"
               required
               autoComplete="username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              autoCapitalize="none"
+              spellCheck={false}
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
               className="input"
             />
           </div>

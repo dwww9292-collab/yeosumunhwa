@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SubPageLayout from "@/components/feature/SubPageLayout";
-import { archiveItems } from "@/mocks/community";
+import { usePublicPosts } from "@/features/posts/usePosts";
 import { matchSearch } from "@/lib/search";
 
 const communityTabs = [
@@ -19,9 +19,13 @@ export default function ArchivePage() {
   const perPage = 8;
   const navigate = useNavigate();
 
-  const filtered = archiveItems.filter((item) => {
-    const typeMatch = activeTab === "video" ? item.type === "video" : item.type === "photo";
-    return typeMatch && matchSearch(searchQuery, searchType, item.title, [item.date]);
+  const { items, loading } = usePublicPosts("archive");
+
+  const filtered = items.filter((item) => {
+    // media_type 이 없는 예전 글은 영상 탭에 둔다
+    const type = item.media_type ?? "video";
+    const typeMatch = type === activeTab;
+    return typeMatch && matchSearch(searchQuery, searchType, item.title, [item.body, item.published_at]);
   });
 
   const totalPages = Math.ceil(filtered.length / perPage);
@@ -90,30 +94,44 @@ export default function ArchivePage() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-        {currentItems.map((item) => (
-          <a key={item.id} href={`/community/archive/${item.id}`} onClick={(e) => { e.preventDefault(); navigate(`/community/archive/${item.id}`); }} className="group block cursor-pointer">
-            <div className="w-full aspect-square overflow-hidden rounded-lg bg-gray-100 mb-3 relative">
-              <img
-                alt={item.title}
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                src={item.image}
-              />
-              {item.type === "video" && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-black/50 flex items-center justify-center">
-                    <i className="ri-play-fill text-white text-xl"></i>
+      {loading ? (
+        <div className="py-20 text-center text-gray-400">
+          <i className="ri-loader-4-line animate-spin text-2xl"></i>
+        </div>
+      ) : currentItems.length === 0 ? (
+        <div className="py-20 text-center text-sm text-gray-400">등록된 게시물이 없습니다.</div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          {currentItems.map((item) => (
+            <a key={item.id} href={`/community/archive/${item.id}`} onClick={(e) => { e.preventDefault(); navigate(`/community/archive/${item.id}`); }} className="group block cursor-pointer">
+              <div className="w-full aspect-square overflow-hidden rounded-lg bg-gray-100 mb-3 relative">
+                {item.image_url ? (
+                  <img
+                    alt={item.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    src={item.image_url}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-300">
+                    <i className="ri-image-line text-3xl"></i>
                   </div>
-                </div>
-              )}
-            </div>
-            <p className="text-sm text-gray-800 line-clamp-2 group-hover:text-[#1a4fa0] transition-colors mb-1">
-              {item.title}
-            </p>
-            <p className="text-xs text-gray-400">{item.date}</p>
-          </a>
-        ))}
-      </div>
+                )}
+                {(item.media_type ?? "video") === "video" && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-black/50 flex items-center justify-center">
+                      <i className="ri-play-fill text-white text-xl"></i>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <p className="text-sm text-gray-800 line-clamp-2 group-hover:text-[#1a4fa0] transition-colors mb-1">
+                {item.title}
+              </p>
+              <p className="text-xs text-gray-400">{item.published_at}</p>
+            </a>
+          ))}
+        </div>
+      )}
     </SubPageLayout>
   );
 }
