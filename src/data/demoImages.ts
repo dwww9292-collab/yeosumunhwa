@@ -53,9 +53,6 @@ export const DEMO_HERO_IMAGES: string[] = [
   "/images/island1.png",
   "/images/yeosu/odongfest.png",
   "/images/hameltrue.png",
-  DEMO_IMAGES["odongdo-1"],
-  DEMO_IMAGES["odongdo-3"],
-  DEMO_IMAGES["odongdo-4"],
   "/images/turtlefest.png",
   "/images/firework.png",
 ].filter(Boolean);
