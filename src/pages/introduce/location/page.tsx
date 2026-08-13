@@ -25,7 +25,7 @@ export default function LocationPage() {
         <div className="w-full h-[400px] md:h-[480px] rounded-xl overflow-hidden border border-gray-200 mb-8">
           <iframe
             title="여수문화재단 위치"
-            src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%EC%A3%BC%EC%8B%9C%20%EA%B4%91%EC%A0%81%EB%A9%B4%20%EB%B6%80%ED%9D%A5%EB%A1%9C618%EB%B2%88%EA%B8%B8%20303&output=embed"
+            src="https://www.google.com/maps?q=%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84%20%EC%97%AC%EC%88%98%EC%8B%9C%20%EC%97%AC%EB%AC%B81%EB%A1%9C%2071&output=embed"
             width="100%"
             height="100%"
             allowFullScreen
@@ -43,8 +43,14 @@ export default function LocationPage() {
             </div>
             <div>
               <h3 className="text-sm font-bold text-gray-800 mb-1">주소</h3>
-              {/* TODO: 재단 확정 주소 확보 후 입력. 기존 값은 양주문화재단(경기도 양주시) 주소였다. */}
-              <p className="text-sm text-gray-600">[확인필요]</p>
+              <p className="text-sm text-gray-700">
+                <span className="inline-block w-14 text-gray-500">도로명</span>
+                전라남도 여수시 여문1로 71 (문수동)
+              </p>
+              <p className="text-sm text-gray-700 mt-1">
+                <span className="inline-block w-14 text-gray-500">지번</span>
+                전라남도 여수시 문수동 161-5
+              </p>
             </div>
           </div>
 
