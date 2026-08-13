@@ -48,7 +48,7 @@ function group(name: keyof typeof DEMO_IMAGE_GROUPS): string[] {
  * 5초 간격이라 6장이면 한 바퀴 30초.
  */
 export const DEMO_HERO_IMAGES: string[] = [
-  "/images/hero-1.png",
+  "/images/hero1.png",
   DEMO_IMAGES["odongdo-1"],
   "/images/island1.png",
   DEMO_IMAGES["odongdo-3"],
