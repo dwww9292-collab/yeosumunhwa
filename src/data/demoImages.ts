@@ -49,8 +49,9 @@ function group(name: keyof typeof DEMO_IMAGE_GROUPS): string[] {
  */
 export const DEMO_HERO_IMAGES: string[] = [
   "/images/hero1.png",
-  DEMO_IMAGES["odongdo-1"],
+  DEMO_IMAGES["odongdo-2"],
   "/images/island1.png",
+  DEMO_IMAGES["odongdo-1"],
   DEMO_IMAGES["odongdo-3"],
   DEMO_IMAGES["odongdo-4"],
   DEMO_IMAGES["odongdo-5"],
