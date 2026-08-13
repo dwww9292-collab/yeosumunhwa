@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./AuthProvider";
 import type { AdminRole } from "./types";
+import { ADMIN_BASE, ADMIN_LOGIN } from "./adminPath";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -22,12 +23,12 @@ export default function ProtectedRoute({ children, role }: ProtectedRouteProps) 
 
   // 미로그인 또는 관리자 프로필 없음 → 로그인 페이지로
   if (!session || !profile || !profile.is_active) {
-    return <Navigate to="/admin/login" replace state={{ from: location.pathname }} />;
+    return <Navigate to={ADMIN_LOGIN} replace state={{ from: location.pathname }} />;
   }
 
   // 권한 검사 (super_admin 전용 영역)
   if (role === "super_admin" && profile.role !== "super_admin") {
-    return <Navigate to="/admin" replace />;
+    return <Navigate to={ADMIN_BASE} replace />;
   }
 
   return <>{children}</>;

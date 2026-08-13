@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { USERNAME_HINT, USERNAME_RULE, isUsernameAvailable } from "@/features/auth/accountId";
+import ConsentBox from "@/features/privacy/ConsentBox";
+import { SIGNUP_CONSENT, TERMS_CONSENT } from "@/features/privacy/consent";
 
 export default function MemberSignup() {
   const { signUp, signIn, session, loading } = useAuth();
@@ -14,6 +16,10 @@ export default function MemberSignup() {
   const [error, setError] = useState<string | null>(null);
   const [idCheck, setIdCheck] = useState<"idle" | "checking" | "ok" | "taken">("idle");
   const [submitting, setSubmitting] = useState(false);
+  // 개인정보 보호법 제15조 — 동의 없이는 수집할 수 없다
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreePrivacy, setAgreePrivacy] = useState(false);
+  const allAgreed = agreeTerms && agreePrivacy;
 
   if (!loading && session) {
     return <Navigate to="/mypage" replace />;
@@ -49,6 +55,10 @@ export default function MemberSignup() {
     }
     if (password.length < 6) {
       setError("비밀번호는 6자 이상이어야 합니다.");
+      return;
+    }
+    if (!allAgreed) {
+      setError("이용약관과 개인정보 수집·이용에 모두 동의하셔야 가입할 수 있습니다.");
       return;
     }
 
@@ -101,7 +111,7 @@ export default function MemberSignup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-10">
-      <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="text-center mb-8">
           <h1 className="text-xl font-bold text-gray-900">회원가입</h1>
           <p className="text-sm text-gray-500 mt-1">여수문화재단 회원으로 가입하세요.</p>
@@ -176,16 +186,24 @@ export default function MemberSignup() {
             />
           </div>
 
+          <ConsentBox
+            spec={TERMS_CONSENT}
+            checked={agreeTerms}
+            onChange={setAgreeTerms}
+            policyPath="/policy/terms"
+          />
+          <ConsentBox spec={SIGNUP_CONSENT} checked={agreePrivacy} onChange={setAgreePrivacy} />
+
           {error && (
-            <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded px-3 py-2">
+            <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-100 rounded px-3 py-2">
               {error}
             </p>
           )}
 
           <button
             type="submit"
-            disabled={submitting}
-            className="w-full bg-[#1a4fa0] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#163f82] transition-colors disabled:opacity-50 cursor-pointer"
+            disabled={submitting || !allAgreed}
+            className="w-full bg-[#1a4fa0] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#163f82] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {submitting ? "가입 중..." : "회원가입"}
           </button>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { supabase } from "@/lib/supabase";
+import { adminPath } from "@/features/auth/adminPath";
 
 interface Stats {
   pendingRentals: number;
@@ -35,19 +36,19 @@ const CARDS: {
   icon: string;
   accent: string;
 }[] = [
-  { key: "pendingRentals", label: "대관 신청 대기", to: "/admin/rentals", icon: "ri-building-line", accent: "text-amber-600" },
-  { key: "posts", label: "알림마당 게시물", to: "/admin/posts", icon: "ri-article-line", accent: "text-[#1a4fa0]" },
-  { key: "events", label: "공연·전시·축제", to: "/admin/events", icon: "ri-calendar-event-line", accent: "text-[#1a4fa0]" },
-  { key: "programs", label: "사업소개", to: "/admin/programs", icon: "ri-briefcase-line", accent: "text-[#1a4fa0]" },
-  { key: "schedules", label: "대관현황 일정", to: "/admin/schedules", icon: "ri-calendar-schedule-line", accent: "text-emerald-600" },
-  { key: "members", label: "가입 회원", to: "/admin/users", icon: "ri-user-line", accent: "text-emerald-600" },
-  { key: "admins", label: "관리자 계정", to: "/admin/members", icon: "ri-shield-user-line", accent: "text-gray-700" },
+  { key: "pendingRentals", label: "대관 신청 대기", to: adminPath("rentals"), icon: "ri-building-line", accent: "text-amber-600" },
+  { key: "posts", label: "알림마당 게시물", to: adminPath("posts"), icon: "ri-article-line", accent: "text-[#1a4fa0]" },
+  { key: "events", label: "공연·전시·축제", to: adminPath("events"), icon: "ri-calendar-event-line", accent: "text-[#1a4fa0]" },
+  { key: "programs", label: "사업소개", to: adminPath("programs"), icon: "ri-briefcase-line", accent: "text-[#1a4fa0]" },
+  { key: "schedules", label: "대관현황 일정", to: adminPath("schedules"), icon: "ri-calendar-schedule-line", accent: "text-emerald-600" },
+  { key: "members", label: "가입 회원", to: adminPath("users"), icon: "ri-user-line", accent: "text-emerald-600" },
+  { key: "admins", label: "관리자 계정", to: adminPath("members"), icon: "ri-shield-user-line", accent: "text-gray-700" },
 ];
 
 const SHORTCUTS = [
-  { label: "게시글 작성", to: "/admin/posts", icon: "ri-add-line" },
-  { label: "대관 신청 검토", to: "/admin/rentals", icon: "ri-check-double-line" },
-  { label: "일정 등록", to: "/admin/schedules", icon: "ri-calendar-line" },
+  { label: "게시글 작성", to: adminPath("posts"), icon: "ri-add-line" },
+  { label: "대관 신청 검토", to: adminPath("rentals"), icon: "ri-check-double-line" },
+  { label: "일정 등록", to: adminPath("schedules"), icon: "ri-calendar-line" },
   { label: "홈페이지 보기", to: "/", icon: "ri-external-link-line" },
 ];
 

@@ -4,6 +4,8 @@ import SubPageLayout from "@/components/feature/SubPageLayout";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { createRental } from "@/features/rentals/api";
 import { RENTAL_SPACES, type RentalInput } from "@/features/rentals/types";
+import ConsentBox from "@/features/privacy/ConsentBox";
+import { RENTAL_CONSENT } from "@/features/privacy/consent";
 
 const rentTabs = [
   { label: "대관현황", href: "/rent/status" },
@@ -33,6 +35,8 @@ export default function RentApply() {
   });
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  // 개인정보 보호법 제15조 — 동의 없이는 수집할 수 없다
+  const [consented, setConsented] = useState(false);
 
   const set = <K extends keyof RentalInput>(key: K, value: RentalInput[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
@@ -42,6 +46,10 @@ export default function RentApply() {
     setError(null);
     if (!form.applicant_name.trim() || !form.use_date_from) {
       setError("신청자명과 사용 시작일은 필수입니다.");
+      return;
+    }
+    if (!consented) {
+      setError("개인정보 수집·이용에 동의하셔야 신청할 수 있습니다.");
       return;
     }
     setSubmitting(true);
@@ -103,15 +111,17 @@ export default function RentApply() {
           <textarea value={form.memo ?? ""} onChange={(e) => set("memo", e.target.value || null)} className="input min-h-[100px]" />
         </Row>
 
+        <ConsentBox spec={RENTAL_CONSENT} checked={consented} onChange={setConsented} />
+
         {error && (
-          <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded px-3 py-2">{error}</p>
+          <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-100 rounded px-3 py-2">{error}</p>
         )}
 
         <div className="flex justify-center gap-3 pt-4">
           <button type="button" onClick={() => navigate(-1)} className="px-6 py-2.5 text-sm text-gray-600 rounded-lg border border-gray-300 hover:bg-gray-50 cursor-pointer">
             취소
           </button>
-          <button type="submit" disabled={submitting} className="px-8 py-2.5 text-sm bg-[#1a4fa0] text-white rounded-lg hover:bg-[#163f82] disabled:opacity-50 cursor-pointer">
+          <button type="submit" disabled={submitting || !consented} className="px-8 py-2.5 text-sm bg-[#1a4fa0] text-white rounded-lg hover:bg-[#163f82] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
             {submitting ? "신청 중..." : "신청하기"}
           </button>
         </div>

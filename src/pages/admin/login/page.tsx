@@ -3,13 +3,16 @@ import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import { useNoIndex } from "@/features/seo/useNoIndex";
+import { ADMIN_BASE } from "@/features/auth/adminPath";
 
 export default function AdminLogin() {
   useNoIndex();
   const { signIn, session, profile, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: string } | null)?.from ?? "/admin";
+  const state = location.state as { from?: string; notice?: string } | null;
+  const from = state?.from ?? ADMIN_BASE;
+  const notice = state?.notice ?? null;
 
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -48,6 +51,12 @@ export default function AdminLogin() {
           <h1 className="text-xl font-bold text-gray-900">여수문화재단 관리자</h1>
           <p className="text-sm text-gray-500 mt-1">관리자 아이디로 로그인하세요.</p>
         </div>
+
+        {notice && (
+          <p role="status" className="mb-4 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded px-3 py-2">
+            {notice}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

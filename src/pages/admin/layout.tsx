@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { useNoIndex } from "@/features/seo/useNoIndex";
+import { ADMIN_BASE, ADMIN_LOGIN, adminPath } from "@/features/auth/adminPath";
 
 interface NavItem {
   label: string;
@@ -13,29 +14,29 @@ interface NavItem {
 const navGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "현황",
-    items: [{ label: "대시보드", to: "/admin", icon: "ri-dashboard-line", end: true }],
+    items: [{ label: "대시보드", to: ADMIN_BASE, icon: "ri-dashboard-line", end: true }],
   },
   {
     title: "콘텐츠 관리",
     items: [
-      { label: "알림마당(게시판)", to: "/admin/posts", icon: "ri-article-line" },
-      { label: "공연·전시·축제", to: "/admin/events", icon: "ri-calendar-event-line" },
-      { label: "사업소개", to: "/admin/programs", icon: "ri-briefcase-line" },
-      { label: "축제 배너", to: "/admin/hero", icon: "ri-slideshow-line" },
+      { label: "알림마당(게시판)", to: adminPath("posts"), icon: "ri-article-line" },
+      { label: "공연·전시·축제", to: adminPath("events"), icon: "ri-calendar-event-line" },
+      { label: "사업소개", to: adminPath("programs"), icon: "ri-briefcase-line" },
+      { label: "축제 배너", to: adminPath("hero"), icon: "ri-slideshow-line" },
     ],
   },
   {
     title: "대관 관리",
     items: [
-      { label: "대관 신청", to: "/admin/rentals", icon: "ri-building-line" },
-      { label: "대관현황 일정", to: "/admin/schedules", icon: "ri-calendar-schedule-line" },
+      { label: "대관 신청", to: adminPath("rentals"), icon: "ri-building-line" },
+      { label: "대관현황 일정", to: adminPath("schedules"), icon: "ri-calendar-schedule-line" },
     ],
   },
   {
     title: "회원 관리",
     items: [
-      { label: "회원", to: "/admin/users", icon: "ri-user-line" },
-      { label: "관리자 계정", to: "/admin/members", icon: "ri-shield-user-line", superOnly: true },
+      { label: "회원", to: adminPath("users"), icon: "ri-user-line" },
+      { label: "관리자 계정", to: adminPath("members"), icon: "ri-shield-user-line", superOnly: true },
     ],
   },
 ];
@@ -47,7 +48,7 @@ export default function AdminLayout() {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate("/admin/login", { replace: true });
+    navigate(ADMIN_LOGIN, { replace: true });
   };
 
   return (

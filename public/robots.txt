@@ -17,13 +17,14 @@ Disallow: /
 # User-agent: *
 # Allow: /
 #
-# # 관리자 영역은 영구 차단
-# Disallow: /admin
-# Disallow: /admin/
-#
 # # 로그인·마이페이지 등 개인 영역
 # Disallow: /member/
 # Disallow: /mypage
 # Disallow: /reset-password
 #
 # Sitemap: https://<실도메인>/sitemap.xml
+#
+# ※ 관리자 경로는 여기에 적지 말 것.
+#    robots.txt 는 공개 파일이라 Disallow 에 적는 순간 경로를 알려주는 셈이 된다.
+#    관리자 페이지는 이미 <meta name="robots" content="noindex"> 로 색인을 막고 있으며,
+#    실질적 차단은 IP 제한과 2차 인증으로 해야 한다.

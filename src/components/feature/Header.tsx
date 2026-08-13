@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/AuthProvider";
+import { ADMIN_BASE } from "@/features/auth/adminPath";
 
 const navItems = [
   {
@@ -131,7 +132,7 @@ export default function Header() {
             {isAdmin ? (
               <>
                 <button
-                  onClick={() => navigate("/admin")}
+                  onClick={() => navigate(ADMIN_BASE)}
                   className={`transition-colors cursor-pointer ${isTransparent ? "text-white/80 hover:text-white" : "text-foreground-600 hover:text-primary-500"}`}
                 >
                   관리자 페이지

@@ -33,6 +33,7 @@ import AdminMembers from "../pages/admin/members/page";
 import AdminPosts from "../pages/admin/posts/page";
 import AdminUsers from "../pages/admin/users/page";
 import AdminSchedules from "../pages/admin/schedules/page";
+import { ADMIN_BASE, ADMIN_LOGIN } from "../features/auth/adminPath";
 import ProtectedRoute from "../features/auth/ProtectedRoute";
 import RequireAuth from "../features/auth/RequireAuth";
 import MemberLogin from "../pages/member/login/page";
@@ -84,9 +85,10 @@ const routes: RouteObject[] = [
   { path: "/policy/:slug", element: <PolicyPage /> },
 
   // ---- 관리자 영역 ----
-  { path: "/admin/login", element: <AdminLogin /> },
+  // 경로는 adminPath 에서만 정의한다. 지침상 /admin 은 사용 금지.
+  { path: ADMIN_LOGIN, element: <AdminLogin /> },
   {
-    path: "/admin",
+    path: ADMIN_BASE,
     element: (
       <ProtectedRoute>
         <AdminLayout />
