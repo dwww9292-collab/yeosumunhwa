@@ -93,7 +93,7 @@ export default function HeroSlider() {
       className={`relative w-full ${
         // DEMO: 시연용 이미지 오버라이드. 실서비스 전환 시 제거 (모바일 잘림 방지용 높이)
         DEMO_IMAGE_OVERRIDE ? DEMO_HERO_HEIGHT : "h-[600px] md:h-[760px] lg:h-[900px] xl:h-[980px]"
-      } overflow-hidden bg-gradient-to-r from-primary-950 via-primary-900 to-primary-800 mt-[-80px] md:mt-[-96px]`}
+      } overflow-hidden bg-gradient-to-r from-primary-950 via-primary-900 to-primary-800 mt-[-96px] md:mt-[-128px]`}
     >
       {slides.map((slide, index) => {
         const isPoster = !!slide.poster;
@@ -112,7 +112,7 @@ export default function HeroSlider() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
             )}
             {!isPoster && (
-              <div className="relative z-10 h-full flex items-center px-4 md:px-12 lg:px-20 pt-[80px] md:pt-[96px]">
+              <div className="relative z-10 h-full flex items-center px-4 md:px-12 lg:px-20 pt-[96px] md:pt-[128px]">
                 <div className="max-w-3xl">
                   <h2 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 drop-shadow-lg">
                     {slide.title}

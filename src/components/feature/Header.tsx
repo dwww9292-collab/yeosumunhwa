@@ -76,7 +76,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isTransparent ? "bg-white/0 shadow-none" : "bg-white shadow-md"}`}
     >
-      <div className="flex items-center justify-between px-4 md:px-8 lg:px-12 h-20 md:h-24">
+      <div className="flex items-center justify-between px-4 md:px-8 lg:px-12 h-24 md:h-32">
         <a
           href="/"
           onClick={(e) => {
@@ -87,7 +87,7 @@ export default function Header() {
         >
           <img
             alt="여수문화재단"
-            className="h-14 md:h-16 lg:h-20 w-auto"
+            className="h-20 md:h-28 lg:h-32 w-auto"
             src="/images/logo3.png"
           />
         </a>
