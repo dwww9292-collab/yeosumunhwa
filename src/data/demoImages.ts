@@ -53,11 +53,11 @@ export const DEMO_HERO_IMAGES: string[] = [
   "/images/island1.png",
   "/images/yeosu/odongfest.png",
   "/images/hamel.png",
-  "/images/turtlefest.png",
   DEMO_IMAGES["odongdo-1"],
   DEMO_IMAGES["odongdo-3"],
   DEMO_IMAGES["odongdo-4"],
-  DEMO_IMAGES["odongdo-5"],
+  "/images/turtlefest.png",
+  "/images/firework.png",
 ].filter(Boolean);
 
 /** 섹션별 카드 이미지 풀 */
