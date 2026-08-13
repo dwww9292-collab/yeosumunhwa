@@ -106,7 +106,13 @@ export default function HeroSlider() {
             <img
               src={slide.image}
               alt={slide.title}
-              className={`absolute inset-0 w-full h-full object-cover ${isPoster ? "object-[50%_60%]" : "object-center"}`}
+              className={`absolute inset-0 w-full h-full object-cover ${
+                isPoster
+                  ? slide.image.includes("hamel")
+                    ? "object-[50%_15%]"
+                    : "object-[50%_60%]"
+                  : "object-center"
+              }`}
             />
             {!isPoster && (
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
