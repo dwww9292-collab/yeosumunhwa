@@ -85,18 +85,11 @@ export default function Header() {
           }}
           className="flex-shrink-0"
         >
-          <div className="flex items-center gap-2 md:gap-3">
-            <img
-              alt="여수문화재단 심볼"
-              className="h-12 md:h-14 lg:h-16 w-auto"
-              src="/images/symbol.png"
-            />
-            <img
-              alt="여수문화재단"
-              className="h-6 md:h-8 lg:h-10 w-auto"
-              src="/images/text.png"
-            />
-          </div>
+          <img
+            alt="여수문화재단"
+            className="h-14 md:h-16 lg:h-20 w-auto"
+            src="/images/logo3.png"
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
