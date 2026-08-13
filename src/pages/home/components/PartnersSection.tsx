@@ -23,6 +23,7 @@ export default function PartnersSection() {
         <div className="relative flex items-center gap-4">
           <button
             onClick={prev}
+            aria-label="이전 협력기관 보기"
             disabled={start === 0}
             className="flex-shrink-0 w-10 h-10 border border-background-200 rounded-full flex items-center justify-center bg-white hover:bg-background-100 disabled:opacity-30 cursor-pointer"
           >

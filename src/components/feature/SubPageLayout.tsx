@@ -72,7 +72,7 @@ export default function SubPageLayout({
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 bg-white">
+      <main id="main-content" className="flex-1 bg-white">
         <div className="max-w-[1240px] mx-auto px-6 py-10">
           {children}
         </div>

@@ -130,6 +130,7 @@ export default function RentStatusPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={prevMonth}
+            aria-label="이전 달"
             className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 cursor-pointer"
           >
             <i className="ri-arrow-left-s-line"></i>
@@ -158,6 +159,7 @@ export default function RentStatusPage() {
           </div>
           <button
             onClick={nextMonth}
+            aria-label="다음 달"
             className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 cursor-pointer"
           >
             <i className="ri-arrow-right-s-line"></i>

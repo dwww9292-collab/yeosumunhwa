@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background-50 font-sans">
       <Header />
-      <main>
+      <main id="main-content">
         <HeroSlider />
         <NewsSection />
         <BusinessSection />

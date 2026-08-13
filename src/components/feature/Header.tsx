@@ -205,8 +205,8 @@ export default function Header() {
               <i className={`ri-youtube-line text-lg ${isTransparent ? "text-white/80" : "text-foreground-600"}`}></i>
             </a>
           </div>
-          <button className="w-8 h-8 flex items-center justify-center cursor-pointer">
-            <i className={`ri-search-line text-lg ${isTransparent ? "text-white/80" : "text-foreground-700"}`}></i>
+          <button type="button" aria-label="검색" className="w-8 h-8 flex items-center justify-center cursor-pointer">
+            <i aria-hidden="true" className={`ri-search-line text-lg ${isTransparent ? "text-white/80" : "text-foreground-700"}`}></i>
           </button>
           <button
             className="lg:hidden w-8 h-8 flex items-center justify-center cursor-pointer"

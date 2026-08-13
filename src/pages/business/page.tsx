@@ -112,9 +112,9 @@ export default function BusinessPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="px-3 py-1.5 text-sm w-48 outline-none"
               />
-              <button className="px-3 py-1.5 bg-gray-800 text-white cursor-pointer hover:bg-gray-900 transition-colors">
-                <i className="ri-search-line"></i>
-              </button>
+              <button type="button" aria-label="검색" className="px-3 py-1.5 bg-gray-800 text-white cursor-pointer hover:bg-gray-900 transition-colors">
+              <i className="ri-search-line" aria-hidden="true"></i>
+            </button>
             </div>
           </div>
         </div>

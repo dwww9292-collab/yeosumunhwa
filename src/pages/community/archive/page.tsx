@@ -86,8 +86,8 @@ export default function ArchivePage() {
               onChange={(e) => { setSearchQuery(e.target.value); setPage(1); }}
               className="px-4 py-2 text-sm outline-none w-48 md:w-64"
             />
-            <button className="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 cursor-pointer">
-              <i className="ri-search-line"></i>
+            <button type="button" aria-label="검색" className="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 cursor-pointer">
+              <i className="ri-search-line" aria-hidden="true"></i>
             </button>
           </div>
         </div>
