@@ -52,6 +52,7 @@ export const DEMO_HERO_IMAGES: string[] = [
   DEMO_IMAGES["odongdo-2"],
   "/images/island1.png",
   "/images/yeosu/odongfest.png",
+  "/images/mude.png",
   "/images/hameltrue.png",
   "/images/turtlefest.png",
   "/images/firework.png",
