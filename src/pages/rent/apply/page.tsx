@@ -6,6 +6,7 @@ import { createRental } from "@/features/rentals/api";
 import { RENTAL_SPACES, type RentalInput } from "@/features/rentals/types";
 import ConsentBox from "@/features/privacy/ConsentBox";
 import { RENTAL_CONSENT } from "@/features/privacy/consent";
+import { detectPii, piiWarningMessage } from "@/features/privacy/detect";
 
 const rentTabs = [
   { label: "대관현황", href: "/rent/status" },
@@ -50,6 +51,12 @@ export default function RentApply() {
     }
     if (!consented) {
       setError("개인정보 수집·이용에 동의하셔야 신청할 수 있습니다.");
+      return;
+    }
+    // 자유 입력란에 주민번호 등이 섞이는 것을 막는다 (연락처·이메일은 정식 수집 항목이라 검사 제외)
+    const pii = detectPii(form.purpose, form.memo);
+    if (pii.length > 0) {
+      setError(piiWarningMessage(pii));
       return;
     }
     setSubmitting(true);

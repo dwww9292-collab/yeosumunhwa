@@ -14,6 +14,7 @@ import type {
   PostInput,
   PostRow,
 } from "@/features/posts/types";
+import { detectPii, piiWarningMessage } from "@/features/privacy/detect";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -27,6 +28,7 @@ const emptyForm = (board: BoardKey): PostInput => ({
   attachments: [],
   is_pinned: false,
   is_published: true,
+  pii_reviewed: false,
   published_at: today(),
 });
 
@@ -75,6 +77,7 @@ export default function AdminPosts() {
       attachments: row.attachments ?? [],
       is_pinned: row.is_pinned,
       is_published: row.is_published,
+      pii_reviewed: row.pii_reviewed ?? false,
       published_at: row.published_at,
     });
     setEditing(row);
@@ -121,6 +124,14 @@ export default function AdminPosts() {
     e.preventDefault();
     if (!form.title.trim()) {
       setError("제목을 입력하세요.");
+      return;
+    }
+    // 개인정보 패턴 1차 검사. 최종 차단은 DB 트리거(supabase/pii_guard.sql)가 한다.
+    const pii = form.pii_reviewed
+      ? []
+      : detectPii(form.title, form.body, form.attachments.map((a) => a.name).join(" "));
+    if (pii.length > 0) {
+      setError(piiWarningMessage(pii));
       return;
     }
     setSaving(true);
@@ -459,6 +470,15 @@ export default function AdminPosts() {
                   상단 고정(공지)
                 </label>
               )}
+              {/* 공고문에 담당자 연락처를 넣어야 하는 경우가 있어 예외를 둔다 */}
+              <label className="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  checked={form.pii_reviewed}
+                  onChange={(e) => setForm({ ...form, pii_reviewed: e.target.checked })}
+                />
+                연락처 포함 허용 (검토 완료)
+              </label>
             </div>
 
             <div className="flex justify-end gap-2 pt-2">

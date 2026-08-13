@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, useCallback } from "rea
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import { resolveLoginEmail } from "./accountId";
+import { logAccess } from "@/features/privacy/accessLog";
 import type { AdminProfile } from "./types";
 
 interface SignInResult {
@@ -97,6 +98,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) return { error: error.message, isAdmin: false };
       const prof = await loadProfile(data.user.id);
+      // 접속기록 (개인정보의 안전성 확보조치 기준 제8조)
+      void logAccess("login", undefined, undefined, prof?.is_active ? "관리자 로그인" : "회원 로그인");
       return { error: null, isAdmin: !!prof?.is_active };
     },
     [loadProfile],
@@ -118,6 +121,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const signOut = useCallback(async () => {
+    // 세션이 끊기면 auth.uid() 를 못 쓰므로 로그아웃 전에 기록한다
+    await logAccess("logout");
     await supabase.auth.signOut();
     setProfile(null);
     setUsername(null);

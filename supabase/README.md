@@ -28,6 +28,20 @@ Supabase 대시보드 → **SQL Editor** 에서 아래 순서대로 실행하세
 > `venue_schedules.sql` 은 기존 `public_rental_bookings` 뷰를 **drop 후 재생성**합니다.
 > 따라서 `public_rental_bookings.sql` 은 더 이상 따로 실행할 필요가 없습니다.
 
+## 2-1. 공공기관 준수사항 대응 (docs/compliance-plan.md)
+
+| 순서 | 파일 | 내용 |
+| --- | --- | --- |
+| 13 | `pii_guard.sql` | 개인정보 패턴 자동 차단. `posts.pii_reviewed` 컬럼을 추가하므로 **앱 배포 전에 먼저 실행**해야 합니다 |
+| 14 | `access_logs.sql` | 접속기록 테이블 · `log_access()` · 보관기간 정리 함수. `list_site_users()` 를 열람 기록이 남는 버전으로 교체합니다 |
+| — | `revoke_demo_accounts.sql` | **운영 전환 시** 시연 계정(admin/user, 비밀번호 111111) 폐기. 평소에는 실행하지 마세요 |
+
+> ⚠️ `pii_guard.sql` 은 `posts` 테이블에 `pii_reviewed` 컬럼을 추가합니다.
+> 이 SQL 을 실행하기 전에 새 앱을 배포하면 게시글 저장이 실패합니다. **SQL 먼저입니다.**
+
+> ⚠️ `access_logs.sql` 은 `list_site_users()` 를 재정의합니다.
+> `site_users.sql` 을 나중에 다시 실행하면 열람 기록 부분이 사라지므로 주의하세요.
+
 ## 3. 계정
 
 로그인은 **아이디 + 비밀번호** 로 합니다. 이메일은 가입 인증과 비밀번호

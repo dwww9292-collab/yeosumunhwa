@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import KoglMark from "@/components/base/KoglMark";
 
 /** 공식 계정 확보 전까지는 아이콘만 비활성 상태로 노출한다. */
 const SNS_CHANNELS = [
@@ -29,6 +30,10 @@ export default function Footer() {
           <span className="text-foreground-600 hidden sm:inline">|</span>
           <Link to="/policy/terms" className="text-sm text-foreground-300 hover:text-background-50 whitespace-nowrap">
             서비스 이용약관
+          </Link>
+          <span className="text-foreground-600 hidden sm:inline">|</span>
+          <Link to="/policy/copyright" className="text-sm text-foreground-300 hover:text-background-50 whitespace-nowrap">
+            저작권 보호정책
           </Link>
           <span className="text-foreground-600 hidden sm:inline">|</span>
           <Link to="/policy/email" className="text-sm text-foreground-300 hover:text-background-50 whitespace-nowrap">
@@ -114,9 +119,17 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-4 border-t border-foreground-700 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-foreground-500">
-            COPYRIGHT ⓒ 2026 Yeosu Cultural Foundation. ALL RIGHTS RESERVED.
-          </p>
+          {/* 공공누리 마크는 지침상 메인 하단 상시 노출 대상 */}
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <Link to="/policy/copyright" aria-label="공공누리 제1유형 안내 보기">
+              <KoglMark />
+            </Link>
+            <p className="text-xs text-foreground-500 text-center sm:text-left">
+              여수문화재단이 창작한 저작물은 공공누리 제1유형(출처표시)에 따라 이용할 수 있습니다.
+              <br className="hidden sm:block" />
+              COPYRIGHT ⓒ 2026 Yeosu Cultural Foundation. ALL RIGHTS RESERVED.
+            </p>
+          </div>
           <button
             onClick={scrollToTop}
             className="flex items-center gap-2 border border-foreground-600 text-foreground-300 px-4 py-2 text-xs hover:bg-foreground-800 transition-colors cursor-pointer whitespace-nowrap"

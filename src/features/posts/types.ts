@@ -37,6 +37,8 @@ export interface PostRow {
   attachments: Attachment[];
   is_pinned: boolean;
   is_published: boolean;
+  /** 개인정보 패턴 검사 예외 처리 여부 (담당자 연락처 등 의도적 포함 시) */
+  pii_reviewed: boolean;
   view_count: number;
   published_at: string;
   created_by: string | null;
@@ -54,6 +56,7 @@ export interface PostInput {
   attachments: Attachment[];
   is_pinned: boolean;
   is_published: boolean;
+  pii_reviewed: boolean;
   published_at: string;
 }
 

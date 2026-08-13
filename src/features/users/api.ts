@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { logAccess } from "@/features/privacy/accessLog";
 
 /** 사이트 가입자 (관리자 계정 포함, is_admin 으로 구분) */
 export interface SiteUser {
@@ -27,9 +28,11 @@ export async function setUserBlocked(id: string, blocked: boolean): Promise<void
     blocked,
   });
   if (error) throw error;
+  await logAccess("update", "auth.users", id, blocked ? "회원 로그인 차단" : "회원 차단 해제");
 }
 
 export async function deleteSiteUser(id: string): Promise<void> {
   const { error } = await supabase.rpc("delete_site_user", { target_id: id });
   if (error) throw error;
+  await logAccess("delete", "auth.users", id, "회원 삭제(신청 이력 포함)");
 }

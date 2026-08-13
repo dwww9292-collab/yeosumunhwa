@@ -1,12 +1,16 @@
 import { useParams } from "react-router-dom";
 import SubPageLayout from "@/components/feature/SubPageLayout";
+import KoglMark from "@/components/base/KoglMark";
 
-type Slug = "privacy" | "terms" | "video" | "email";
+type Slug = "privacy" | "terms" | "video" | "email" | "copyright";
+
+const SLUGS: Slug[] = ["privacy", "terms", "video", "email", "copyright"];
 
 const TABS: { label: string; href: string; slug: Slug }[] = [
   { label: "개인정보처리방침", href: "/policy/privacy", slug: "privacy" },
   { label: "영상정보처리기기 운영·관리 방침", href: "/policy/video", slug: "video" },
   { label: "서비스 이용약관", href: "/policy/terms", slug: "terms" },
+  { label: "저작권 보호정책", href: "/policy/copyright", slug: "copyright" },
   { label: "이메일무단수집거부", href: "/policy/email", slug: "email" },
 ];
 
@@ -15,7 +19,23 @@ interface Section {
   body: string;
 }
 
-const CONTENT: Record<Slug, { title: string; intro: string; sections: Section[] }> = {
+/** 개정 이력 — 최신이 위 */
+interface Revision {
+  version: string;
+  effectiveDate: string;
+  summary: string;
+}
+
+interface Policy {
+  title: string;
+  intro: string;
+  sections: Section[];
+  /** 현행 문서 시행일 — 개인정보처리방침 필수 기재사항 */
+  effectiveDate: string;
+  revisions: Revision[];
+}
+
+const CONTENT: Record<Slug, Policy> = {
   privacy: {
     title: "개인정보처리방침",
     intro:
@@ -43,6 +63,10 @@ const CONTENT: Record<Slug, { title: string; intro: string; sections: Section[] 
           "재단은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 정보주체의 불만처리 및 피해구제를 위하여 개인정보 보호책임자를 지정하고 있습니다.\n- 문의: 여수문화재단 대표전화 [확인필요]",
       },
     ],
+    effectiveDate: "2026-08-13",
+    revisions: [
+      { version: "v1.0", effectiveDate: "2026-08-13", summary: "최초 수립·공개" },
+    ],
   },
   video: {
     title: "영상정보처리기기 운영·관리 방침",
@@ -55,6 +79,10 @@ const CONTENT: Record<Slug, { title: string; intro: string; sections: Section[] 
       { heading: "관리책임자 및 열람", body: "영상정보의 보관·관리 책임은 각 시설 운영팀에 있으며, 영상정보 열람 요청은 대표전화([확인필요])로 문의하시기 바랍니다." },
       { heading: "보관 기간 및 파기", body: "촬영된 영상정보는 관련 법령이 정한 기간 동안 보관 후 지체 없이 파기합니다." },
     ],
+    effectiveDate: "2026-08-13",
+    revisions: [
+      { version: "v1.0", effectiveDate: "2026-08-13", summary: "최초 수립·공개" },
+    ],
   },
   terms: {
     title: "서비스 이용약관",
@@ -65,6 +93,10 @@ const CONTENT: Record<Slug, { title: string; intro: string; sections: Section[] 
       { heading: "제3조 (서비스의 제공 및 변경)", body: "재단은 안정적인 서비스 제공을 위해 노력하며, 운영상·기술상의 필요에 따라 제공하는 서비스의 내용을 변경할 수 있습니다." },
       { heading: "제4조 (이용자의 의무)", body: "이용자는 관계 법령, 본 약관의 규정 및 이용 안내 등 재단이 통지하는 사항을 준수하여야 하며, 재단의 업무에 방해되는 행위를 하여서는 안 됩니다." },
     ],
+    effectiveDate: "2026-08-13",
+    revisions: [
+      { version: "v1.0", effectiveDate: "2026-08-13", summary: "최초 수립·공개" },
+    ],
   },
   email: {
     title: "이메일무단수집거부",
@@ -73,22 +105,63 @@ const CONTENT: Record<Slug, { title: string; intro: string; sections: Section[] 
       { heading: "관련 법령", body: "「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제50조의2(전자우편주소의 무단 수집행위 등 금지)에 따라 누구든지 인터넷 홈페이지 운영자의 사전 동의 없이 자동 수집 프로그램 등을 이용하여 전자우편주소를 수집하여서는 안 됩니다." },
       { heading: "위반 시 조치", body: "본 방침을 위반하여 이메일 주소를 무단 수집·판매·유통하거나 이를 이용한 경우 관련 법령에 따라 형사처벌 대상이 될 수 있습니다." },
     ],
+    effectiveDate: "2026-08-13",
+    revisions: [
+      { version: "v1.0", effectiveDate: "2026-08-13", summary: "최초 수립·공개" },
+    ],
+  },
+  copyright: {
+    title: "저작권 보호정책",
+    intro:
+      "여수문화재단이 창작한 저작물은 공공누리 제1유형(출처표시)에 따라 별도의 이용허락 절차 없이 자유롭게 이용하실 수 있습니다. 다만 제3자에게 저작권이 있는 자료는 적용 대상에서 제외되므로, 이용 전 아래 내용을 확인해 주시기 바랍니다.",
+    sections: [
+      {
+        heading: "공공누리 제1유형 (출처표시)",
+        body:
+          "재단이 저작재산권 전부를 보유한 공공저작물은 공공누리 제1유형으로 개방합니다.\n- 출처를 표시하면 상업적 이용이 가능합니다.\n- 변형 및 2차적 저작물 작성이 가능합니다.\n\n출처 표시 예시: \"본 저작물은 여수문화재단에서 [작성연도] 작성하여 공공누리 제1유형으로 개방한 저작물입니다.\"",
+      },
+      {
+        heading: "적용 제외 대상",
+        body:
+          "다음 자료는 재단이 저작재산권 전부를 보유하지 않았거나 제3자의 권리가 포함되어 있어 공공누리 적용 대상에서 제외됩니다. 이용을 원하시면 사전에 개별 문의해 주시기 바랍니다.\n- 재단 로고, CI, 심볼 등 기관 상징물\n- 제3자에게 저작권이 있는 사진·영상·음원·디자인\n- 초상권 등 타인의 권리가 포함된 자료\n- 타 기관이 주최·주관하는 행사의 홍보물 및 캐릭터\n- 개인정보 또는 비공개 대상 정보가 포함된 자료",
+      },
+      {
+        heading: "이용자의 준수사항",
+        body:
+          "이용자는 공공저작물을 이용할 때 출처를 반드시 표시해야 하며, 재단이 후원하거나 이용자와 특수한 관계에 있는 것처럼 표시하여서는 안 됩니다. 이용 조건을 위반한 경우 이용허락이 자동으로 종료되며, 위반에 따른 책임은 이용자에게 있습니다.",
+      },
+      {
+        heading: "문의",
+        body:
+          "공공저작물 이용 및 적용 제외 자료의 개별 이용허락에 관한 문의는 재단 홍보 담당 부서로 연락 주시기 바랍니다.\n- 문의: 여수문화재단 [확인필요]",
+      },
+    ],
+    effectiveDate: "2026-08-13",
+    revisions: [
+      { version: "v1.0", effectiveDate: "2026-08-13", summary: "최초 수립·공개" },
+    ],
   },
 };
 
 export default function PolicyPage() {
   const { slug } = useParams<{ slug: string }>();
-  const key: Slug = (["privacy", "terms", "video", "email"] as Slug[]).includes(slug as Slug)
-    ? (slug as Slug)
-    : "privacy";
+  const key: Slug = SLUGS.includes(slug as Slug) ? (slug as Slug) : "privacy";
   const content = CONTENT[key];
 
   return (
     <SubPageLayout categoryLabel="이용안내" categoryPath="/policy/privacy" currentLabel={content.title} tabs={TABS}>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">{content.title}</h2>
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">{content.title}</h2>
+        {/* 시행일 표기는 개인정보처리방침의 필수 기재사항이다 */}
+        <p className="text-sm text-gray-500">
+          시행일 <time dateTime={content.effectiveDate}>{content.effectiveDate}</time>
+        </p>
+      </div>
       <p className="text-sm text-gray-600 leading-relaxed bg-gray-50 border border-gray-100 rounded-lg p-5 mb-8 whitespace-pre-line">
         {content.intro}
       </p>
+
+      {key === "copyright" && <KoglNotice />}
       <div className="space-y-7">
         {content.sections.map((s) => (
           <section key={s.heading}>
@@ -97,9 +170,60 @@ export default function PolicyPage() {
           </section>
         ))}
       </div>
+      {/* 개정 이력 — 변경 이력 관리는 처리방침 필수 요건 */}
+      <section className="mt-12 pt-6 border-t border-gray-200">
+        <h3 className="text-base font-bold text-gray-800 mb-3">개정 이력</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-t border-gray-200">
+            <caption className="sr-only">{content.title} 개정 이력</caption>
+            <thead>
+              <tr className="text-left text-xs text-gray-500">
+                <th scope="col" className="py-2 pr-4 font-medium w-20">버전</th>
+                <th scope="col" className="py-2 pr-4 font-medium w-32">시행일</th>
+                <th scope="col" className="py-2 font-medium">주요 변경 내용</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {content.revisions.map((r) => (
+                <tr key={r.version}>
+                  <td className="py-2 pr-4 text-gray-700">{r.version}</td>
+                  <td className="py-2 pr-4 text-gray-600 font-mono">{r.effectiveDate}</td>
+                  <td className="py-2 text-gray-600">{r.summary}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <p className="text-xs text-gray-400 mt-10 pt-6 border-t border-gray-100">
         ※ 본 문서는 시연용 프로토타입의 표준 양식 예시이며, 실제 시행 문서는 재단 법무·운영 검토 후 확정됩니다.
       </p>
     </SubPageLayout>
+  );
+}
+
+/** 공공누리 제1유형 안내 배너 */
+function KoglNotice() {
+  return (
+    <div className="mb-8 flex flex-col sm:flex-row items-start gap-4 rounded-lg border border-[#1a4fa0]/30 bg-[#1a4fa0]/5 p-5">
+      <KoglMark />
+      <div className="text-sm text-gray-700 leading-relaxed">
+        <p className="font-bold text-gray-900 mb-1">공공누리 제1유형 : 출처표시</p>
+        <p>
+          여수문화재단이 창작한 공공저작물은 출처를 표시하면 상업적 이용과 변형이
+          모두 가능합니다. 자세한 내용은{" "}
+          <a
+            href="https://www.kogl.or.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#1a4fa0] underline"
+          >
+            공공누리 누리집
+          </a>
+          을 참고하세요.
+        </p>
+      </div>
+    </div>
   );
 }
