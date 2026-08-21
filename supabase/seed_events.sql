@@ -5,7 +5,7 @@
 
 insert into public.events (type, title, image_url, tag, location, start_date, end_date, sort_order) values
 -- ===== 공연 (performance) =====
-('performance', '[안내] 여수문화재단 기획공연 모바일 티켓 사용법', 'https://public.readdy.ai/ai/img_res/edited_5688a75bcf70dbdd45bec9121be637d5_c28165a8.jpg', '기획', '여수문화재단 공연장', '2026-02-27', '2026-12-31', 1),
+('performance', '[안내] 여수문화관광재단 기획공연 모바일 티켓 사용법', 'https://public.readdy.ai/ai/img_res/edited_5688a75bcf70dbdd45bec9121be637d5_c28165a8.jpg', '기획', '여수문화관광재단 공연장', '2026-02-27', '2026-12-31', 1),
 ('performance', '[기획] 찾아가는 문화하루 1회차 <정오의 하모니>', 'https://public.readdy.ai/ai/img_res/edited_10efdec102b0c023cd0144ac639ebc57_c28165a8.jpg', '기획', 'LG이노텍 여수사업장', '2026-06-10', '2026-06-10', 2),
 ('performance', '[기획] 2026 문화살롱 2회차 <오락가락(五樂歌樂) 콘서트: 청춘국악>', 'https://public.readdy.ai/ai/img_res/edited_e35327b635d438b265e874405fa149c1_c28165a8.jpg', '기획', '여수사랑행복센터 대공연장', '2026-06-11', '2026-06-11', 3),
 ('performance', '[기획] 2026 실내악 시리즈<브라보 브라스(Bravo Brass)>', 'https://public.readdy.ai/ai/img_res/edited_57bdb839b35c1d1f4424b4b4b9a0b8d5_c28165a8.jpg', '기획', '여수아트홀 공연장', '2026-06-19', '2026-06-19', 4),
@@ -16,7 +16,7 @@ insert into public.events (type, title, image_url, tag, location, start_date, en
 
 -- ===== 전시 (exhibition) =====
 ('exhibition', '[기획전시] 평화뮤지엄 S827 개관전 <평화의 빛, 미래의 길 "동행">', 'https://public.readdy.ai/ai/img_res/edited_419d5cf07d8effef86a0b1cfa0249a8b_c28165a8.jpg', '기획', '평화뮤지엄 S827', '2026-02-27', '2026-05-31', 1),
-('exhibition', '[기획] 여수문화재단 초대작가전 <지역 예술의 새로운 시선>', 'https://public.readdy.ai/ai/img_res/edited_16af136d75a903c025c7f93cb9d13056_c28165a8.jpg', '기획', '여수문화재단 전시실(경기 여수시 광적면 부흥로618번길 303)', '2025-05-23', '2025-06-02', 2),
+('exhibition', '[기획] 여수문화관광재단 초대작가전 <지역 예술의 새로운 시선>', 'https://public.readdy.ai/ai/img_res/edited_16af136d75a903c025c7f93cb9d13056_c28165a8.jpg', '기획', '여수문화관광재단 전시실(경기 여수시 광적면 부흥로618번길 303)', '2025-05-23', '2025-06-02', 2),
 
 -- ===== 축제 (festival) =====
 ('festival', '[축제]2025년 제7회 여수호수공원 불꽃축제', 'https://public.readdy.ai/ai/img_res/edited_2d85f9f92c08c6a7b1c10cc325e82d37_c28165a8.jpg', '기획', '여수호수공원 일대', '2025-11-01', '2025-11-01', 1),

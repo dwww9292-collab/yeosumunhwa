@@ -153,11 +153,11 @@ export const businessPrograms = [
 export const performanceItems = [
   {
     id: 1,
-    title: "[안내] 여수문화재단 기획공연 모바일 티켓 사용법",
+    title: "[안내] 여수문화관광재단 기획공연 모바일 티켓 사용법",
     image: "https://public.readdy.ai/ai/img_res/edited_5688a75bcf70dbdd45bec9121be637d5_c28165a8.jpg",
     tag: "기획",
     status: "진행중",
-    location: "여수문화재단 공연장",
+    location: "여수문화관광재단 공연장",
     dateRange: "2026-02-27(금) ~ 2026-12-31(목)",
   },
   {
@@ -237,11 +237,11 @@ export const exhibitionItems = [
   },
   {
     id: 2,
-    title: "[기획] 여수문화재단 초대작가전 <지역 예술의 새로운 시선>",
+    title: "[기획] 여수문화관광재단 초대작가전 <지역 예술의 새로운 시선>",
     image: "https://public.readdy.ai/ai/img_res/edited_16af136d75a903c025c7f93cb9d13056_c28165a8.jpg",
     tag: "기획",
     status: "종료",
-    location: "여수문화재단 전시실(경기 여수시 광적면 부흥로618번길 303)",
+    location: "여수문화관광재단 전시실(경기 여수시 광적면 부흥로618번길 303)",
     dateRange: "2025-05-23(금) ~ 2025-06-02(월)",
   },
 ];

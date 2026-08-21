@@ -114,7 +114,7 @@ export default function MemberSignup() {
       <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="text-center mb-8">
           <h1 className="text-xl font-bold text-gray-900">회원가입</h1>
-          <p className="text-sm text-gray-500 mt-1">여수문화재단 회원으로 가입하세요.</p>
+          <p className="text-sm text-gray-500 mt-1">여수문화관광재단 회원으로 가입하세요.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

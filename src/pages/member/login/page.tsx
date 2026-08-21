@@ -37,7 +37,7 @@ export default function MemberLogin() {
       <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="text-center mb-8">
           <h1 className="text-xl font-bold text-gray-900">로그인</h1>
-          <p className="text-sm text-gray-500 mt-1">여수문화재단 회원 로그인</p>
+          <p className="text-sm text-gray-500 mt-1">여수문화관광재단 회원 로그인</p>
         </div>
 
         {notice && (

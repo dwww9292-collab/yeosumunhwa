@@ -8,5 +8,5 @@ export const announceItems = [
   { id: 7, num: 1, title: "2025년 계약현황", date: "2026-01-15", category: "계약현황" },
   { id: 8, num: 1, title: "2025년 업무추진비 집행내역", date: "2026-01-20", category: "업무추진비" },
   { id: 9, num: 1, title: "2025년 복리후생비 집행내역", date: "2026-01-20", category: "복리후생비 집행내역" },
-  { id: 10, num: 1, title: "여수문화재단 정관", date: "2025-12-01", category: "기타" },
+  { id: 10, num: 1, title: "여수문화관광재단 정관", date: "2025-12-01", category: "기타" },
 ];

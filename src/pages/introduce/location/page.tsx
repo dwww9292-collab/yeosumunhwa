@@ -24,7 +24,7 @@ export default function LocationPage() {
         {/* Map */}
         <div className="w-full h-[400px] md:h-[480px] rounded-xl overflow-hidden border border-gray-200 mb-8">
           <iframe
-            title="여수문화재단 위치"
+            title="여수문화관광재단 위치"
             src="https://www.google.com/maps?q=%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84%20%EC%97%AC%EC%88%98%EC%8B%9C%20%EC%97%AC%EB%AC%B81%EB%A1%9C%2071&output=embed"
             width="100%"
             height="100%"

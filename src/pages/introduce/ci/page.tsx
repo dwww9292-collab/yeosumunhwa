@@ -33,7 +33,7 @@ export default function CIPage() {
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">CI소개</h2>
           <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            여수문화재단의 CI는 여수별산대놀이의 해학과 풍자, 그리고 여수의 전통과 자연을
+            여수문화관광재단의 CI는 여수별산대놀이의 해학과 풍자, 그리고 여수의 전통과 자연을
             현대적으로 재해석하여 담아낸 브랜드 아이덴티티입니다.
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function CIPage() {
             <div className="flex flex-col lg:flex-row gap-10 items-center">
               <div className="flex-shrink-0 w-full lg:w-72 flex items-center justify-center bg-white rounded-xl border border-gray-200 p-6">
                 <img
-                  alt="여수문화재단 심볼마크"
+                  alt="여수문화관광재단 심볼마크"
                   className="max-w-full max-h-[220px] object-contain"
                   src={logoUrl}
                 />
@@ -57,7 +57,7 @@ export default function CIPage() {
               <div className="flex-1">
                 <h4 className="text-base font-bold text-gray-900 mb-3">브랜드마크 형태 의미</h4>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  여수문화재단의 심볼마크는 여수별산대놀이의 세 가면 — <strong>말뚝이</strong>,
+                  여수문화관광재단의 심볼마크는 여수별산대놀이의 세 가면 — <strong>말뚝이</strong>,
                   <strong>취발이</strong>, <strong>샌님</strong> — 의 특징을 현대적으로 추상화하여 담아냈습니다.
                   중앙의 오렌지 타원형은 취발이의 가면을, 좌측의 초록 곡선은 말뚝이의 풍자적인 미소를,
                   우측의 파란 곡선은 샌님의 유쾌한 형태를 상징합니다.
@@ -189,7 +189,7 @@ export default function CIPage() {
           <div className="bg-gray-50/80 border border-gray-100 rounded-2xl p-6 md:p-8">
             <h4 className="text-sm font-bold text-gray-900 mb-1">슬로건</h4>
             <p className="text-xs text-gray-500 mb-5">
-              여수문화재단의 핵심 가치를 담은 브랜드 슬로건입니다.
+              여수문화관광재단의 핵심 가치를 담은 브랜드 슬로건입니다.
             </p>
             <div className="bg-white border border-gray-200 rounded-xl p-6 text-center">
               <p className="text-lg font-bold text-gray-900 mb-1">
@@ -210,7 +210,7 @@ export default function CIPage() {
           </div>
 
           <p className="text-sm text-gray-500 mb-8 leading-relaxed">
-            여수문화재단의 공식 캐릭터는 여수별산대놀이의 해학과 풍자를 담은 세 마스크 —
+            여수문화관광재단의 공식 캐릭터는 여수별산대놀이의 해학과 풍자를 담은 세 마스크 —
             말뚝이, 취발이, 샌님 — 을 현대적으로 재해석하여 제작되었습니다.
             세 캐릭터는 각기 다른 성격과 역할을 통해 여수의 문화와 전통을 유쾌하고 친근하게 전달합니다.
           </p>
@@ -218,7 +218,7 @@ export default function CIPage() {
           {/* 캐릭터 전체 이미지 */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 mb-8 flex items-center justify-center">
             <img
-              alt="여수문화재단 캐릭터 — 말뚝이, 취발이, 샌님"
+              alt="여수문화관광재단 캐릭터 — 말뚝이, 취발이, 샌님"
               className="max-w-full object-contain"
               src={charactersUrl}
             />

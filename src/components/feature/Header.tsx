@@ -87,7 +87,7 @@ export default function Header() {
           className="flex-shrink-0"
         >
           <img
-            alt="여수문화재단"
+            alt="여수문화관광재단"
             className="h-20 md:h-28 lg:h-32 w-auto"
             src="/images/logo3.png"
           />

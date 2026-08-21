@@ -23,10 +23,10 @@ export default function NewsSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
           <div>
             <p className="text-sm text-foreground-500 mb-1">
-              (재)여수문화재단에서 알려드립니다.
+              (재)여수문화관광재단에서 알려드립니다.
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground-950">
-              여수문화재단 소식
+              여수문화관광재단 소식
             </h2>
           </div>
           <div className="flex gap-1 mt-4 md:mt-0">

@@ -48,7 +48,7 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="text-center mb-8">
-          <h1 className="text-xl font-bold text-gray-900">여수문화재단 관리자</h1>
+          <h1 className="text-xl font-bold text-gray-900">여수문화관광재단 관리자</h1>
           <p className="text-sm text-gray-500 mt-1">관리자 아이디로 로그인하세요.</p>
         </div>
 

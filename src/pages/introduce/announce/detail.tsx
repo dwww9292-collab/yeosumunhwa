@@ -57,7 +57,7 @@ export default function AnnounceDetail() {
             <div className="py-10 min-h-[160px]">
               <p className="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
                 {[
-                  `여수문화재단 경영공시 - ${item.category}`,
+                  `여수문화관광재단 경영공시 - ${item.category}`,
                   `「${item.title}」 자료를 공개합니다. 세부 내역은 첨부 문서를 통해 확인하실 수 있으며, 본 자료는 ${item.date} 기준으로 작성되었습니다.`,
                   `※ 본 페이지는 시연용 프로토타입으로, 실제 공시 문서는 관리자 페이지에서 등록·관리됩니다.`,
                 ].join("\n\n")}

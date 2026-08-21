@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* Logo & Contact - spans 5 cols */}
           <div className="lg:col-span-5">
-            <span className="text-xl font-bold text-background-50 mb-4 block">여수문화재단</span>
+            <span className="text-xl font-bold text-background-50 mb-4 block">여수문화관광재단</span>
             {/* TODO: 재단 확정 정보 확보 후 입력. 기존 값은 양주문화재단(경기도 양주시,
                 031-828-9772, 사업자번호 153-82-00687) 정보라 삭제했다.
                 틀린 값을 노출하는 것보다 [확인필요] 표기가 안전하다. */}
@@ -125,7 +125,7 @@ export default function Footer() {
               <KoglMark />
             </Link>
             <p className="text-xs text-foreground-500 text-center sm:text-left">
-              여수문화재단이 창작한 저작물은 공공누리 제1유형(출처표시)에 따라 이용할 수 있습니다.
+              여수문화관광재단이 창작한 저작물은 공공누리 제1유형(출처표시)에 따라 이용할 수 있습니다.
               <br className="hidden sm:block" />
               COPYRIGHT ⓒ 2026 Yeosu Cultural Foundation. ALL RIGHTS RESERVED.
             </p>

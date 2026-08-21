@@ -1,6 +1,6 @@
 # 로그인 · 관리자 페이지 구축 계획
 
-> 대상: 여수문화재단 웹사이트 (React 19 + Vite + TS + Tailwind + react-router-dom v7)
+> 대상: 여수문화관광재단 웹사이트 (React 19 + Vite + TS + Tailwind + react-router-dom v7)
 > 백엔드: **Supabase** (Auth + Postgres + Storage + RLS)
 > 로그인 범위: **관리자 전용** / 대관 신청은 시민 공개 폼(로그인 불필요)
 
